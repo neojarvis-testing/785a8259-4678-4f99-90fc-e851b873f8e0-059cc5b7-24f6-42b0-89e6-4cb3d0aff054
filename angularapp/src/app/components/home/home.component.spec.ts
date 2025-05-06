@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -8,6 +11,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports:[ReactiveFormsModule,HttpClientTestingModule, RouterTestingModule, FormsModule],
       declarations: [ HomeComponent ]
     })
     .compileComponents();
@@ -19,7 +23,12 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+fit('Frontend_should_create_home_component', () => {
+  expect(component).toBeTruthy();
+});
+
+fit('Frontend_should_contain_hire_flow_heading_in_the_home_component', () => {
+  const componentHTML = fixture.debugElement.nativeElement.outerHTML;
+  expect(componentHTML).toContain('HireFlow');
+});
 });
