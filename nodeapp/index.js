@@ -1,9 +1,21 @@
 const mongoose = require('mongoose');
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const userRouter = require('./routers/userRouter');
 
+
 app.use(express.json());
+
+app.use(cors(
+    {
+        origin: 'https://8081-accecafecdeea325967471cfdbcbacfdone.premiumproject.examly.io',
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+        exposedHeaders: ['Content-Type', 'X-Powered-By'],
+        credentials: false
+    }
+))
 
 app.use('/user', userRouter);
 
