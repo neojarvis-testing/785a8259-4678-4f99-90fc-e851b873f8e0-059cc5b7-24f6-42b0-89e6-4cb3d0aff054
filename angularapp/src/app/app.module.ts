@@ -15,6 +15,8 @@ import { RecruiterNavbarComponent } from './components/recruiter-navbar/recruite
 import { RecruiterViewCandidateComponent } from './components/recruiter-view-candidate/recruiter-view-candidate.component';
 import { RecruiterViewRequirementComponent } from './components/recruiter-view-requirement/recruiter-view-requirement.component';
 import { RecruiterViewRegistrationComponent } from './components/recruiter-view-registration/recruiter-view-registration.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,13 @@ import { RecruiterViewRegistrationComponent } from './components/recruiter-view-
     RecruiterNavbarComponent,
     RecruiterViewCandidateComponent,
     RecruiterViewRequirementComponent,
-    RecruiterViewRegistrationComponent
+    RecruiterViewRegistrationComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,10 @@
+.error {
+    color: red;
+    font-size: 14px;
+}
+.modal-content{
+background-color: #3872c4;
+}
+.ok{
+    width: 100px;
+}
