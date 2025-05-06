@@ -1,0 +1,99 @@
+<!-- Common Navbar -->
+<app-navbar></app-navbar>
+
+<!-- Centered Container -->
+<div class="d-flex justify-content-center align-items-center">
+    <div class="container p-4 shadow rounded bg-light w-50">
+        <h2 class="text-center mb-4">Signup</h2>
+        <form [formGroup]="signupForm" class="row g-3">
+            <!-- Username -->
+            <div class="col-12">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" formControlName="userName">
+                <div *ngIf="signupForm.get('userName')?.invalid && signupForm.get('userName')?.touched"
+                    class="text-danger">
+                    Username is required.
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="col-12">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email">
+                <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="text-danger">
+                    Enter a valid email.
+                </div>
+            </div>
+
+            <!-- Mobile Number -->
+            <div class="col-12">
+                <label class="form-label">Mobile Number</label>
+                <input type="tel" class="form-control" formControlName="mobile">
+                <div *ngIf="signupForm.get('mobile')?.invalid && signupForm.get('mobile')?.touched" class="text-danger">
+                    Enter a valid 10-digit mobile number.
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="col-12">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" formControlName="password">
+                <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
+                    class="text-danger">
+                    Password is required.
+                </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="col-12">
+                <label class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" formControlName="confirmPassword">
+                <div *ngIf="signupForm.errors?.mismatch && signupForm.get('confirmPassword')?.touched"
+                    class="text-danger">
+                    Passwords do not match.
+                </div>
+            </div>
+
+            <!-- Role Dropdown -->
+            <div class="col-12">
+                <label class="form-label">Role</label>
+                <select class="form-select" formControlName="role">
+                    <option value="">Select Role</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Recruiter">Recruiter</option>
+                </select>
+                <div *ngIf="signupForm.get('role')?.invalid && signupForm.get('role')?.touched" class="text-danger">
+                    Please select a role.
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="col-12">
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                    data-bs-target="#successModal" [disabled]="signupForm.invalid">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="navigateToLogin()"></button>
+                </div>
+                <h5 class="modal-title text-white">User Registration Successful</h5>
+            </div>
+            <div class="modal-body text-white">
+                Your account has been successfully created!
+            </div>
+            <div class="modal-body d-flex justify-content-center">
+                <button type="button" class="btn btn-light ok"  data-bs-dismiss="modal" (click)="navigateToLogin()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
