@@ -9,8 +9,9 @@
             <!-- Username -->
             <div class="col-12">
                 <label class="form-label">Username</label>
-                <input type="text" class="form-control" formControlName="username">
-                <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched" class="text-danger">
+                <input type="text" class="form-control" formControlName="userName">
+                <div *ngIf="signupForm.get('userName')?.invalid && signupForm.get('userName')?.touched"
+                    class="text-danger">
                     Username is required.
                 </div>
             </div>
@@ -37,13 +38,18 @@
             <div class="col-12">
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control" formControlName="password">
+                <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
+                    class="text-danger">
+                    Password is required.
+                </div>
             </div>
 
             <!-- Confirm Password -->
             <div class="col-12">
                 <label class="form-label">Confirm Password</label>
                 <input type="password" class="form-control" formControlName="confirmPassword">
-                <div *ngIf="signupForm.errors?.mismatch && signupForm.get('confirmPassword')?.touched" class="text-danger">
+                <div *ngIf="signupForm.errors?.mismatch && signupForm.get('confirmPassword')?.touched"
+                    class="text-danger">
                     Passwords do not match.
                 </div>
             </div>
@@ -63,7 +69,8 @@
 
             <!-- Submit Button -->
             <div class="col-12">
-                <button type="button" class="btn btn-primary w-100" [disabled]="signupForm.invalid" (click)="openModal()">
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                    data-bs-target="#successModal" [disabled]="signupForm.invalid">
                     Submit
                 </button>
             </div>
@@ -72,19 +79,20 @@
 </div>
 
 <!-- Success Modal -->
-<div *ngIf="isModalOpen" class="modal fade show d-block" tabindex="-1">
+<div class="modal fade" id="successModal">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">User Registration Successful</h5>
-                <button type="button" class="btn-close" (click)="closeModal()"></button>
-            </div>
             <div class="modal-body">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="navigateToLogin()"></button>
+                </div>
+                <h5 class="modal-title text-white">User Registration Successful</h5>
+            </div>
+            <div class="modal-body text-white">
                 Your account has been successfully created!
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
-                <button type="button" class="btn btn-primary" (click)="navigateToLogin()">OK</button>
+            <div class="modal-body d-flex justify-content-center">
+                <button type="button" class="btn btn-light ok"  data-bs-dismiss="modal" (click)="navigateToLogin()">OK</button>
             </div>
         </div>
     </div>
