@@ -15,6 +15,9 @@ import { RecruiterNavbarComponent } from './components/recruiter-navbar/recruite
 import { RecruiterViewCandidateComponent } from './components/recruiter-view-candidate/recruiter-view-candidate.component';
 import { RecruiterViewRequirementComponent } from './components/recruiter-view-requirement/recruiter-view-requirement.component';
 import { RecruiterViewRegistrationComponent } from './components/recruiter-view-registration/recruiter-view-registration.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,13 @@ import { RecruiterViewRegistrationComponent } from './components/recruiter-view-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot({
+      positionClass:'toast-top-right'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

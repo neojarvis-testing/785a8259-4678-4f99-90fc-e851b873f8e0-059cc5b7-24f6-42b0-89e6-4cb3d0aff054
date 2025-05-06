@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavbarComponent } from './navbar.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -8,6 +11,7 @@ describe('NavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule, FormsModule],
       declarations: [ NavbarComponent ]
     })
     .compileComponents();
@@ -19,7 +23,8 @@ describe('NavbarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  fit('Frontend_should_create_navbar_component', () => {
     expect(component).toBeTruthy();
   });
+
 });

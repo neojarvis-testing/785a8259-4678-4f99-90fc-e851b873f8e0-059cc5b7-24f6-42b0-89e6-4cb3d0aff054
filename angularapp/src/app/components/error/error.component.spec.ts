@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ErrorComponent } from './error.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ErrorComponent', () => {
   let component: ErrorComponent;
@@ -8,6 +11,7 @@ describe('ErrorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports:[ReactiveFormsModule,HttpClientTestingModule, RouterTestingModule, FormsModule],
       declarations: [ ErrorComponent ]
     })
     .compileComponents();
@@ -19,7 +23,13 @@ describe('ErrorComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  fit('Frontend_should_create_error_component', () => {
     expect(component).toBeTruthy();
   });
+
+  fit('Frontend_should_contain_something_went_wrong_message_in_the_error_component', () => {
+    const componentHTML = fixture.debugElement.nativeElement.outerHTML;
+    expect(componentHTML).toContain('Something Went Wrong');
+  });
+
 });

@@ -1,0 +1,15 @@
+button {
+  background: linear-gradient(to right, #024698, #00ccfff7); /* Deep blue to sky blue */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 15px;
+  font-weight: bold;
+}
+.card{
+  border-radius: 10px;
+}
+input.form-control{
+  border-radius: 50px;
+  padding:10px 15px;
+}
