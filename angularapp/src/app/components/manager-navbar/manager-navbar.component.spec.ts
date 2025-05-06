@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { ManagerNavbarComponent } from './manager-navbar.component';
 
@@ -8,6 +11,7 @@ describe('ManagerNavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule, FormsModule],
       declarations: [ ManagerNavbarComponent ]
     })
     .compileComponents();
@@ -19,7 +23,8 @@ describe('ManagerNavbarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  fit('Frontend_should_create_manager_navbar_component', () => {
     expect(component).toBeTruthy();
   });
+
 });
