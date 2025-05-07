@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center align-items-center vh-100">
+<!-- <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4 shadow" style="width: 350px; border-radius: 10px;">
       <h4 class="text-center mb-4">LOGIN</h4>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -22,5 +22,55 @@
         </button>
       </form>
       <p class="text-center mt-3 mb-0">Don't have an account? <a href="#">Signup</a></p>
+    </div>
+  </div> -->
+  <!-- <nav class="gradient-custom navbar px-3 navbar-expand-lg">
+    <a class="navbar-brand text-white">ℍ𝕀ℝ𝔼𝔽𝕃𝕆𝕎</a>
+    <ul class="nav nav-pills ms-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/signup">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+    </ul>
+  </nav> -->
+  
+  <app-navbar></app-navbar>
+  <div class="login-container">
+    <div class="image-side">
+      <h2>Welcome to HireFlow</h2>
+      <p>Streamline your hiring process with our powerful recruitment platform. Login to access your dashboard and find the best talent.</p>
+    </div>
+    
+    <div class="form-side">
+      <div class="card login-card">
+        <h4>LOGIN</h4>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group mb-3">
+            <input type="email" class="form-control" placeholder="Email" formControlName="email">
+            <div class="errors">
+              <small style="color: red;" *ngIf="loginForm.get('email').touched && loginForm.get('email').errors?.required">Email is required</small>
+              <small style="color: red;" *ngIf="loginForm.get('email').touched && loginForm.get('email').errors?.email">Enter a valid Email</small>
+            </div>
+          </div>
+          
+          <div class="form-group mb-3">
+            <input type="password" class="form-control" placeholder="Password" formControlName="password">
+            <div class="errors">
+              <small style="color: red;" *ngIf="loginForm.get('password').touched && loginForm.get('password').errors?.required">Password is required</small>
+              <small style="color: red;" *ngIf="loginForm.get('password').touched && loginForm.get('password').errors?.minlength">Password should be 8 characters</small>
+            </div>
+          </div>
+          
+          <small style="color: red;" class="login-error" *ngIf="loginError">{{loginError}}</small>
+          
+          <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="loginForm.invalid">
+            Login
+          </button>
+          
+          <p class="text-center mt-3 mb-0">Don't have an account? <a routerLink="/signup">Sign up</a></p>
+        </form>
+      </div>
     </div>
   </div>
