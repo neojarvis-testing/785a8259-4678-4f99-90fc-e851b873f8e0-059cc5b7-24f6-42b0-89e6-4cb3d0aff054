@@ -15,7 +15,6 @@ export class RegistrationComponent implements AfterViewInit {
   submitted = false;
   signupForm!: FormGroup;
   modalInstance!: any;
-
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
     this.signupForm = this.fb.group({
       userName: ['', Validators.required],
@@ -28,10 +27,6 @@ export class RegistrationComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const modalElement = document.getElementById('successModal');
-    if (modalElement) {
-      this.modalInstance = new bootstrap.Modal(modalElement);
-    }
   }
 
   // Password match validation
@@ -45,8 +40,6 @@ export class RegistrationComponent implements AfterViewInit {
   }
 
   onSignUp() {
-    console.log('iamhere');
-    
     this.submitted = true;
 
     const userData: User = {
@@ -57,12 +50,18 @@ export class RegistrationComponent implements AfterViewInit {
       role: this.signupForm.value.role,
     };
 
-    
     this.authService.register(userData).subscribe({
       next: () => {
         alert('User Registration is Successful!');
         this.submitted = false;
-        // this.router.navigate(['/login']);
+        localStorage.setItem('userEmail', this.signupForm.value.email);
+        const modalElement = document.getElementById('successModal');
+      if (modalElement) {
+        const modalInstance = new bootstrap.Modal(modalElement);
+        modalInstance.show();
+      }
+
+        this.navigateToLogin();
       },
       error: (error) => {
         console.error('Registration failed:', error);

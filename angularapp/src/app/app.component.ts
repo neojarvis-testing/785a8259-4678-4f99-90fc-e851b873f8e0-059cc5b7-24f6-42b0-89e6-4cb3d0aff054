@@ -8,11 +8,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'angularapp';
-  
-
   constructor(private router: Router) {
       
   }
+  
   isLandingPage():boolean{
     
       return this.router.url === '/';
