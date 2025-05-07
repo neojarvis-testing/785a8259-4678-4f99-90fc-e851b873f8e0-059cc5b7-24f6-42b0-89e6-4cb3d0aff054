@@ -10,29 +10,29 @@ import { Login } from 'src/app/models/login.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  
-  loginForm: FormGroup;
-  
-  loginError: string = ''; 
+
+  loginForm!: FormGroup;
+
+  loginError: string = '';
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
 
+  ngOnInit(): void { }
+
   onSubmit(): void {
-    this.loginError = ''; // Clear previous errors
+    this.loginError = '';
     if (this.loginForm.valid) {
       const loginData: Login = this.loginForm.value;
-  
+
       this.authService.login(loginData).subscribe({
         next: (response) => {
           localStorage.setItem('token', response.token);
@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/home']);
         },
         error: (err) => {
-          
           const msg = err.message?.toLowerCase();
           if (msg?.includes('invalid') || msg?.includes('incorrect') || msg?.includes('not match')) {
             this.loginError = 'Invalid Email or Password';
