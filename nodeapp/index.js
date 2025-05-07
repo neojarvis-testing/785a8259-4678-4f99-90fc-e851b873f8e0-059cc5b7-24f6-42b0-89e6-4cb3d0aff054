@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
-    origin: 'https://8081-accecafecdeea325967471cfdbcbacfdone.premiumproject.examly.io',
+    origin: 'https://8081-cfcbdadefbeadacbeabccbfbecbdaff.premiumproject.examly.io',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     exposedHeaders: ['Content-Type', 'X-Powered-By'],
