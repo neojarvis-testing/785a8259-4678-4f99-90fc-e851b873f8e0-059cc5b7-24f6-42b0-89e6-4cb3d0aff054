@@ -5,11 +5,11 @@
 <div class="d-flex justify-content-center align-items-center">
     <div class="container p-4 shadow rounded bg-light w-50">
         <h2 class="text-center mb-4">Signup</h2>
-        <form [formGroup]="signupForm" class="row g-3">
+        <form [formGroup]="signupForm" class="row g-3" (submit)="onSignUp()">
             <!-- Username -->
             <div class="col-12">
                 <label class="form-label">Username</label>
-                <input type="text" class="form-control" formControlName="userName">
+                <input type="text" class="form-control" name="userName" autocomplete="off" formControlName="userName">
                 <div *ngIf="signupForm.get('userName')?.invalid && signupForm.get('userName')?.touched"
                     class="text-danger">
                     Username is required.
@@ -19,7 +19,7 @@
             <!-- Email -->
             <div class="col-12">
                 <label class="form-label">Email</label>
-                <input type="email" class="form-control" formControlName="email">
+                <input type="email" class="form-control" name="email" autocomplete="email" formControlName="email">
                 <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="text-danger">
                     Enter a valid email.
                 </div>
@@ -28,36 +28,16 @@
             <!-- Mobile Number -->
             <div class="col-12">
                 <label class="form-label">Mobile Number</label>
-                <input type="tel" class="form-control" formControlName="mobile">
+                <input type="tel" class="form-control" name="mobile" autocomplete="mobile" formControlName="mobile">
                 <div *ngIf="signupForm.get('mobile')?.invalid && signupForm.get('mobile')?.touched" class="text-danger">
                     Enter a valid 10-digit mobile number.
                 </div>
             </div>
-
-            <!-- Password -->
-            <div class="col-12">
-                <label class="form-label">Password</label>
-                <input type="password" class="form-control" formControlName="password">
-                <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
-                    class="text-danger">
-                    Password is required.
-                </div>
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="col-12">
-                <label class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" formControlName="confirmPassword">
-                <div *ngIf="signupForm.errors?.mismatch && signupForm.get('confirmPassword')?.touched"
-                    class="text-danger">
-                    Passwords do not match.
-                </div>
-            </div>
-
+            
             <!-- Role Dropdown -->
             <div class="col-12">
                 <label class="form-label">Role</label>
-                <select class="form-select" formControlName="role">
+                <select class="form-select" name="role" autocomplete="role" formControlName="role">
                     <option value="">Select Role</option>
                     <option value="Manager">Manager</option>
                     <option value="Recruiter">Recruiter</option>
@@ -67,9 +47,30 @@
                 </div>
             </div>
 
-            <!-- Submit Button -->
+            <!-- Password -->
             <div class="col-12">
-                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal"
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" autocomplete="new-password" formControlName="password">
+                <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
+                    class="text-danger">
+                    Password is required.
+                </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="col-12">
+                <label class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" name="confirmPassword" autocomplete="new-password" formControlName="confirmPassword">
+                <div *ngIf="signupForm.errors?.mismatch && signupForm.get('confirmPassword')?.touched"
+                    class="text-danger">
+                    Passwords do not match.
+                </div>
+            </div>
+
+
+            <!-- Submit Button -->
+            <div class="col-12 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary w-100" data-bs-toggle="modal"
                     data-bs-target="#successModal" [disabled]="signupForm.invalid">
                     Submit
                 </button>
@@ -84,7 +85,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="navigateToLogin()"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        (click)="navigateToLogin()"></button>
                 </div>
                 <h5 class="modal-title text-white">User Registration Successful</h5>
             </div>
@@ -92,8 +94,9 @@
                 Your account has been successfully created!
             </div>
             <div class="modal-body d-flex justify-content-center">
-                <button type="button" class="btn btn-light ok"  data-bs-dismiss="modal" (click)="navigateToLogin()">OK</button>
+                <button type="button" class="btn btn-light ok" data-bs-dismiss="modal"
+                    (click)="navigateToLogin()">OK</button>
             </div>
         </div>
-    </div>
+    </div> 
 </div>

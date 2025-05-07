@@ -1,1 +1,87 @@
-<p>home works!</p>
+<app-manager-navbar *ngIf="userRole==='Manager'"></app-manager-navbar>
+<app-recruiter-navbar *ngIf="userRole==='Recruiter'"></app-recruiter-navbar>
+<div class="home-container">
+    <!-- Hero Section - Reduced bottom padding -->
+    <div class="hero-section">
+      <div class="container">
+        <h1>HireFlow</h1>
+        <p class="lead">HireFlow is a powerful platform designed to streamline hiring processes by facilitating the creation, management, and dissemination of job requirements. By providing an intuitive interface, HireFlow empowers recruitment teams and managers to efficiently post job requirements and oversee the recruitment workflow. Whether you're a recruitment team member or a program manager, HireFlow offers comprehensive tools to facilitate the approval, tracking, and management of job requirements. Through fostering collaboration between recruitment teams and managers, HireFlow creates an efficient environment where job opportunities are efficiently managed and fulfilled.</p>
+      </div>
+    </div>
+  
+    <!-- Role-Based Cards - Reduced top padding -->
+    <div class="container pb-3">  <!-- Reduced pb-5 to pb-3 -->
+      <!-- Recruiter View -->
+      <div *ngIf="userRole === 'Recruiter'">
+        <h2 class="section-title">Recruitment Team Tools</h2>
+        <div class="card-grid">
+          <div class="feature-card">
+            <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                 alt="Recruitment team">
+            <div class="card-body">
+              <h3>Candidate Management</h3>
+              <p>Add, edit and track candidate progress through out the hiring process</p>
+            </div>
+          </div>
+  
+          <div class="feature-card">
+            <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1527&q=80" 
+                 alt="Candidate management">
+            <div class="card-body">
+              <h3>Job Requirements</h3>
+              <p>View current job openings and thier requirements</p>
+            </div>
+          </div>
+  
+          <div class="feature-card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                 alt="Workflow">
+            <div class="card-body">
+              <h3>Hiring Workflow</h3>
+              <p>Oversee the complete recruitment process from start to finish</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Manager View -->
+      <div *ngIf="userRole === 'Manager'">
+        <h2 class="section-title">Manager Tools</h2>
+        <div class="card-grid">
+          <div class="feature-card">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                 alt="Requirements">
+            <div class="card-body">
+              <h3>Requirements Approval</h3>
+              <p>Create and modify job requirements for open positions</p>
+            </div>
+          </div>
+  
+          <div class="feature-card">
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                 alt="Candidate review">
+            <div class="card-body">
+              <h3>Candidate Review</h3>
+              <p>Review and Update candidate status in the hiring process</p>
+            </div>
+          </div>
+  
+          <div class="feature-card">
+            <img src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" 
+                 alt="Team collaboration">
+            <div class="card-body">
+              <h3>Team Collaboration</h3>
+              <p>Work seamlessly with recruitment teams</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Collaboration Section - Reduced padding -->
+    <div class="collaboration-section">
+      <div class="container">
+        <p>Through fostering collaboration between recruitment teams and managers, HireFlow creates an efficient environment where job opportunities are efficiently managed and fulfilled.</p>
+      </div>
+    </div>
+  </div>
