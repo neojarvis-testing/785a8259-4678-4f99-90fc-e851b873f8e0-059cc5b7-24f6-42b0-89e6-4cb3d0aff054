@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -14,7 +13,7 @@ import { ManagerAddRequirementComponent } from './components/manager-add-require
 import { ManagerNavbarComponent } from './components/manager-navbar/manager-navbar.component';
 import { ManagerViewCandidateComponent } from './components/manager-view-candidate/manager-view-candidate.component';
 import { ManagerViewRequirementComponent } from './components/manager-view-requirement/manager-view-requirement.component';
-import { RecruiterAddCandidateComponent } from './components/recruiter-add-candidate/recruiter-add-candidate.component';
+import { AddCandidateComponent } from './components/recruiter-add-candidate/recruiter-add-candidate.component';
 import { RecruiterNavbarComponent } from './components/recruiter-navbar/recruiter-navbar.component';
 import { RecruiterViewCandidateComponent } from './components/recruiter-view-candidate/recruiter-view-candidate.component';
 import { RecruiterViewRequirementComponent } from './components/recruiter-view-requirement/recruiter-view-requirement.component';
@@ -32,7 +31,7 @@ import { ErrorComponent } from './components/error/error.component';
     ManagerViewCandidateComponent,
     ManagerViewRequirementComponent,
     NavbarComponent,
-    RecruiterAddCandidateComponent,
+    AddCandidateComponent,
     RecruiterNavbarComponent,
     RecruiterViewCandidateComponent,
     RecruiterViewRequirementComponent,
