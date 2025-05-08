@@ -1,60 +1,82 @@
-<!-- recruiter navbar -->
 <app-recruiter-navbar></app-recruiter-navbar>
 
-<!-- add candidate form -->
-<form #candidateForm="ngForm" (ngSubmit)="onSubmit(candidateForm)" class="container mt-5">
-    <h2 class="mb-3">Add New Candidate</h2>
-  
+<div class="container mt-5 d-flex justify-content-center">
+  <form [formGroup]="candidateForm" (ngSubmit)="onSubmit()" class="card p-5 shadow " style="min-width: 600px; max-width: 850px;">
+    <h2 class="mb-3 text-center">
+      {{ isEditMode ? 'Edit Candidate' : 'Add New Candidate' }}
+    </h2>
+
     <!-- Name -->
     <div class="mb-3">
       <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
-      <input type="text" id="name" name="name" class="form-control" placeholder="Name" required [(ngModel)]="candidate.name" #name="ngModel">
-      <div *ngIf="name.invalid && name.touched" class="text-danger">Name is required.</div>
+      <input type="text" id="name" class="form-control" formControlName="name" placeholder="Name" />
+      <div *ngIf="f.name.touched && f.name.invalid" class="text-danger">Name is required</div>
     </div>
-  
+
     <!-- Email -->
     <div class="mb-3">
       <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-      <input type="email" id="email" name="email" class="form-control" placeholder="Email" required [(ngModel)]="candidate.email" #email="ngModel">
-      <div *ngIf="email.invalid && email.touched" class="text-danger">Valid email is required.</div>
+      <input type="email" id="email" class="form-control" formControlName="email" placeholder="Email" />
+      <div *ngIf="f.email.touched && f.email.errors?.required" class="text-danger">Email is required</div>
+      <div *ngIf="f.email.touched && f.email.errors?.email" class="text-danger">Invalid email format</div>
     </div>
-  
+
     <!-- Phone -->
     <div class="mb-3">
       <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
-      <input type="tel" id="phone" name="phone" class="form-control" placeholder="Phone" required [(ngModel)]="candidate.phone" #phone="ngModel">
-      <div *ngIf="phone.invalid && phone.touched" class="text-danger">Phone number is required.</div>
+      <input type="tel" id="phone" class="form-control" formControlName="phone" placeholder="Phone" />
+      <div *ngIf="f.phone.touched && f.phone.invalid" class="text-danger">Phone number is required</div>
     </div>
-  
+
     <!-- Educational Qualification -->
     <div class="mb-3">
-      <label for="education" class="form-label">Educational Qualification <span class="text-danger">*</span></label>
-      <input type="text" id="education" name="education" class="form-control" placeholder="Educational Qualification" required [(ngModel)]="candidate.education" #education="ngModel">
-      <div *ngIf="education.invalid && education.touched" class="text-danger">Educational qualification is required.</div>
+      <label for="educationalQualification" class="form-label">Educational Qualification <span class="text-danger">*</span></label>
+      <input type="text" id="educationalQualification" class="form-control" formControlName="educationalQualification" placeholder="Educational Qualification" />
+      <div *ngIf="f.educationalQualification.touched && f.educationalQualification.invalid" class="text-danger">Educational qualification is required</div>
     </div>
-  
+
     <!-- Experience -->
     <div class="mb-3">
       <label for="experience" class="form-label">Experience <span class="text-danger">*</span></label>
-      <input type="text" id="experience" name="experience" class="form-control" placeholder="Experience" required [(ngModel)]="candidate.experience" #experience="ngModel">
-      <div *ngIf="experience.invalid && experience.touched" class="text-danger">Experience is required.</div>
+      <input type="text" id="experience" class="form-control" formControlName="experience" placeholder="Experience" />
+      <div *ngIf="f.experience.touched && f.experience.invalid" class="text-danger">Experience is required</div>
     </div>
-  
+
     <!-- Tech Stack -->
     <div class="mb-3">
       <label for="techStack" class="form-label">Tech Stack <span class="text-danger">*</span></label>
-      <input type="text" id="techStack" name="techStack" class="form-control" placeholder="Tech Stack" required [(ngModel)]="candidate.techStack" #techStack="ngModel">
-      <div *ngIf="techStack.invalid && techStack.touched" class="text-danger">Tech stack is required.</div>
+      <input type="text" id="techStack" class="form-control" formControlName="techStack" placeholder="Tech Stack" />
+      <div *ngIf="f.techStack.touched && f.techStack.invalid" class="text-danger">Tech stack is required</div>
     </div>
-  
+
     <!-- Resume URL -->
     <div class="mb-3">
       <label for="resumeUrl" class="form-label">Resume URL <span class="text-danger">*</span></label>
-      <input type="url" id="resumeUrl" name="resumeUrl" class="form-control" placeholder="Resume URL" required [(ngModel)]="candidate.resumeUrl" #resumeUrl="ngModel">
-      <div *ngIf="resumeUrl.invalid && resumeUrl.touched" class="text-danger">Resume URL is required.</div>
+      <input type="url" id="resumeUrl" class="form-control" formControlName="resumeUrl" placeholder="Resume URL" />
+      <div *ngIf="f.resumeUrl.touched && f.resumeUrl.errors?.required" class="text-danger">Resume URL is required</div>
+      <div *ngIf="f.resumeUrl.touched && f.resumeUrl.errors?.pattern" class="text-danger">Must be a valid URL (http/https)</div>
     </div>
-  
+
     <!-- Submit Button -->
-    <button type="submit" class="btn btn-success w-100" [disabled]="candidateForm.invalid">Submit</button>
+    <button type="submit" class="btn btn-success w-100" [disabled]="candidateForm.invalid">
+      {{ isEditMode ? 'Update' : 'Submit' }}
+    </button>
   </form>
-  
+</div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content border-success" style="border-top: 5px solid green;">
+      <div class="modal-header">
+        <h5 class="modal-title text-success">Success</h5>
+      </div>
+      <div class="modal-body">
+        <p>{{ successMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="redirectToList()" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,12 +11,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(cors({
-    origin: process.env.backendUri2,
+    origin: process.env.backendUri4,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     exposedHeaders: ['Content-Type', 'X-Powered-By'],
     credentials: false
 }))
+app.options('*',cors());
 
 app.use('/user', userRouter);
 app.use('/requirement', requirementRouter);
