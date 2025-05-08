@@ -5,13 +5,17 @@ import { Router } from '@angular/router';
   selector: 'app-manager-navbar',
   templateUrl: './manager-navbar.component.html',
   styleUrls: ['./manager-navbar.component.css'],
-  encapsulation: ViewEncapsulation.None // ✅ Allows styles to affect the whole app
+  encapsulation: ViewEncapsulation.None
 })
 export class ManagerNavbarComponent implements OnInit {
 
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  logout(){
+    
+  }
 
   confirmLogout(): void {
     // Clear user session

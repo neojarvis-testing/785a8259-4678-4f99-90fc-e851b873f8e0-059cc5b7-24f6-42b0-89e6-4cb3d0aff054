@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken')
-const SECRET_KEY = 'asdfgewlnclnlhjkl';
 
-exports.generateToken = (userId) => jwt.sign(userId, SECRET_KEY, { expiresIn: '1h' })
+exports.generateToken = (userId) => jwt.sign({userId}, SECRET_KEY, { expiresIn: '1h' })
 
 exports.validateToken = (req, res, next) => {
     try {
