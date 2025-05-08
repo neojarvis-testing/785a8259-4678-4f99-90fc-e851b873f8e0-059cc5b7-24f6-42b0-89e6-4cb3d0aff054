@@ -1,1 +1,60 @@
-<p>recruiter-add-candidate works!</p>
+<!-- recruiter navbar -->
+<app-recruiter-navbar></app-recruiter-navbar>
+
+<!-- add candidate form -->
+<form #candidateForm="ngForm" (ngSubmit)="onSubmit(candidateForm)" class="container mt-5">
+    <h2 class="mb-3">Add New Candidate</h2>
+  
+    <!-- Name -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+      <input type="text" id="name" name="name" class="form-control" placeholder="Name" required [(ngModel)]="candidate.name" #name="ngModel">
+      <div *ngIf="name.invalid && name.touched" class="text-danger">Name is required.</div>
+    </div>
+  
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+      <input type="email" id="email" name="email" class="form-control" placeholder="Email" required [(ngModel)]="candidate.email" #email="ngModel">
+      <div *ngIf="email.invalid && email.touched" class="text-danger">Valid email is required.</div>
+    </div>
+  
+    <!-- Phone -->
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone <span class="text-danger">*</span></label>
+      <input type="tel" id="phone" name="phone" class="form-control" placeholder="Phone" required [(ngModel)]="candidate.phone" #phone="ngModel">
+      <div *ngIf="phone.invalid && phone.touched" class="text-danger">Phone number is required.</div>
+    </div>
+  
+    <!-- Educational Qualification -->
+    <div class="mb-3">
+      <label for="education" class="form-label">Educational Qualification <span class="text-danger">*</span></label>
+      <input type="text" id="education" name="education" class="form-control" placeholder="Educational Qualification" required [(ngModel)]="candidate.education" #education="ngModel">
+      <div *ngIf="education.invalid && education.touched" class="text-danger">Educational qualification is required.</div>
+    </div>
+  
+    <!-- Experience -->
+    <div class="mb-3">
+      <label for="experience" class="form-label">Experience <span class="text-danger">*</span></label>
+      <input type="text" id="experience" name="experience" class="form-control" placeholder="Experience" required [(ngModel)]="candidate.experience" #experience="ngModel">
+      <div *ngIf="experience.invalid && experience.touched" class="text-danger">Experience is required.</div>
+    </div>
+  
+    <!-- Tech Stack -->
+    <div class="mb-3">
+      <label for="techStack" class="form-label">Tech Stack <span class="text-danger">*</span></label>
+      <input type="text" id="techStack" name="techStack" class="form-control" placeholder="Tech Stack" required [(ngModel)]="candidate.techStack" #techStack="ngModel">
+      <div *ngIf="techStack.invalid && techStack.touched" class="text-danger">Tech stack is required.</div>
+    </div>
+  
+    <!-- Resume URL -->
+    <div class="mb-3">
+      <label for="resumeUrl" class="form-label">Resume URL <span class="text-danger">*</span></label>
+      <input type="url" id="resumeUrl" name="resumeUrl" class="form-control" placeholder="Resume URL" required [(ngModel)]="candidate.resumeUrl" #resumeUrl="ngModel">
+      <div *ngIf="resumeUrl.invalid && resumeUrl.touched" class="text-danger">Resume URL is required.</div>
+    </div>
+  
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-success w-100" [disabled]="candidateForm.invalid">Submit</button>
+  </form>
+  

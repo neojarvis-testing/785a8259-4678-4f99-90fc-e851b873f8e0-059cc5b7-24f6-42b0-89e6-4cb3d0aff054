@@ -1,1 +1,65 @@
-<p>manager-add-requirement works!</p>
+<!-- Manager Navbar -->
+<app-manager-navbar></app-manager-navbar>
+
+<!-- Manager Add Requirement -->
+<div class="container shadow-lg border rounded mt-4">
+    <h2 class=" mt-3 mb-3 text-center">Add Requirement</h2>
+
+    <form [formGroup]="requirementForm" (ngSubmit)="addRequirement()" novalidate>
+        <div class="mb-3">
+            <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
+            <input type="text" id="title" class="form-control" formControlName="title" required
+                [ngClass]="{ 'is-invalid': requirementForm.controls['title'].invalid && requirementForm.controls['title'].touched }"
+                placeholder="Title">
+            <div *ngIf="requirementForm.controls['title'].invalid && requirementForm.controls['title'].touched"
+                class="invalid-feedback">
+                Title is required.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Description <span class="text-danger">*</span></label>
+            <textarea id="description" class="form-control" formControlName="description" required
+                [ngClass]="{ 'is-invalid': requirementForm.controls['description'].invalid && requirementForm.controls['description'].touched }"
+                placeholder="Description"></textarea>
+            <div *ngIf="requirementForm.controls['description'].invalid && requirementForm.controls['description'].touched"
+                class="invalid-feedback">
+                Description is required.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="department" class="form-label">Department <span class="text-danger">*</span></label>
+            <input type="text" id="department" class="form-control" formControlName="department" required
+                [ngClass]="{ 'is-invalid': requirementForm.controls['department'].invalid && requirementForm.controls['department'].touched }"
+                placeholder="Department">
+            <div *ngIf="requirementForm.controls['department'].invalid && requirementForm.controls['department'].touched"
+                class="invalid-feedback">
+                Department is required.
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3 mb-3 d-block mx-auto" [disabled]="requirementForm.invalid"
+            data-bs-toggle="modal" data-bs-target="#successModal">
+            Submit
+        </button>
+
+    </form>
+</div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow-lg border border-2 border-success">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <h6>Requirement added successfully!</h6>
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" (click)="closeModalAndNavigate()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
