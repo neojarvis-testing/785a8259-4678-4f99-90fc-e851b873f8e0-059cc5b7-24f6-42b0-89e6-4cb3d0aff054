@@ -10,7 +10,7 @@ import { ManagerAddRequirementComponent } from './components/manager-add-require
 import { ManagerNavbarComponent } from './components/manager-navbar/manager-navbar.component';
 import { RecruiterNavbarComponent } from './components/recruiter-navbar/recruiter-navbar.component';
 import { RecruiterViewCandidateComponent } from './components/recruiter-view-candidate/recruiter-view-candidate.component';
-import { RecruiterAddCandidateComponent } from './components/recruiter-add-candidate/recruiter-add-candidate.component';
+import { AddCandidateComponent } from './components/recruiter-add-candidate/recruiter-add-candidate.component';
 import { RecruiterViewRequirementComponent } from './components/recruiter-view-requirement/recruiter-view-requirement.component';
 
 const routes: Routes = [
@@ -30,9 +30,10 @@ const routes: Routes = [
   //recruiter module routing paths
   {path : 'recruiter', component: RecruiterNavbarComponent},
   // {path : 'recruiter/home', component: HomeComponent},
-  {path : 'recruiter/view-candidate', component: RecruiterViewCandidateComponent},
-  {path : 'recruiter/add-candidate', component: RecruiterAddCandidateComponent},
-  {path : 'recruiter/view-requirement', component: RecruiterViewRequirementComponent}
+  {path : 'recruiter/getAllCandidates', component: RecruiterViewCandidateComponent},
+  {path : 'recruiter/addCandidate', component: AddCandidateComponent},
+  {path : 'recruiter/addCandidate/:id', component: AddCandidateComponent},
+  {path: 'recruiter/getAllRequirements', component: RecruiterViewRequirementComponent}
 ];
 
 @NgModule({
