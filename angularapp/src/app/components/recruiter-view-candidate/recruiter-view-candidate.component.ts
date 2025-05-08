@@ -13,3 +13,4 @@ export class RecruiterViewCandidateComponent implements OnInit {
   }
 
 }
+

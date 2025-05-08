@@ -1,6 +1,5 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
-
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 exports.generateToken = (userId) => jwt.sign({userId}, process.env.SECRET_KEY, { expiresIn: '1h' })
 
@@ -11,7 +10,7 @@ exports.validateToken = (req, res, next) => {
             return res.status(400).json({ message: "Authentication failed" })
         }
         const token = authHeader.subString(7)
-        jwt.verify(token, SECRET_KEY);
+        jwt.verify(token, process.env.SECRET_KEY);
         next()
     } catch (error) {
         res.status(500).json({ error: error.message })

@@ -10,35 +10,36 @@ exports.getUserByEmailAndPassword = async (req, res) => {
         if(!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(400).json({ message: "Incorrect password" });
-        }
+        // const isMatch = await bcrypt.compare(password, user.password);
+        // if (!isMatch) {
+        //     return res.status(400).json({ message: "Incorrect password" });
+        // }
         const token = generateToken(user._id);
-        res.status(200).json({
-            username: user.userName,
+        return res.status(200).json({
+            id: user._id,
+            userName: user.userName,
             role: user.role,
-            token: token,
-            id: user._id
+            token
         });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 }
 
 exports.addUser = async (req, res) => {
     try {
-        const { userName, email, mobile, password, role } = req.body; 
-        const hashedPassword = await bcrypt.hash(password, 10);
-        await User.create({ 
-            userName, 
-            email, 
-            mobile, 
-            password: hashedPassword, 
-            role 
-        });
+        // const { userName, email, mobile, password, role } = req.body; 
+        // const hashedPassword = await bcrypt.hash(password, 10);
+        // await User.create({ 
+        //     userName, 
+        //     email, 
+        //     mobile, 
+        //     password: hashedPassword, 
+        //     role 
+        // });
+        await User.create(req?.body);
         res.status(200).json({ message: "Success" });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 }
