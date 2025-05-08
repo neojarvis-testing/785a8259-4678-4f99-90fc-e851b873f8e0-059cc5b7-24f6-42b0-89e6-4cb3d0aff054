@@ -1,1 +1,39 @@
-<p>Requirements</p>
+<app-recruiter-navbar></app-recruiter-navbar>
+
+<div class="container mt-5">
+    <h3 class="text-center mb-4">Requirements</h3>
+
+   <div class="d-flex justify-content-start mb-3">
+    <input type="text" class="form-control " placeholder="Search..." [(ngModel)]="searchText"
+    (input)="applySearch()" />
+   </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>S.No</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Department</th>
+                    <th>Posted Date</th>
+                </tr>
+            </thead>
+            <tbody *ngIf="filteredRequirements.length; else noRecords">
+                <tr *ngFor="let req of filteredRequirements; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ req.title }}</td>
+                    <td>{{ req.description }}</td>
+                    <td>{{ req.department }}</td>
+                    <td>{{ req.postedDate | date: 'MMM dd, yyyy' }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ng-template #noRecords>
+            <tr>
+                <td colspan="5" class="text-center text-muted">No matching requirements found</td>
+            </tr>
+        </ng-template>
+    </div>
+</div>
