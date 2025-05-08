@@ -61,7 +61,7 @@ export class RegistrationComponent implements AfterViewInit {
         modalInstance.show();
       }
 
-        this.navigateToLogin();
+        // this.navigateToLogin();
       },
       error: (error) => {
         console.error('Registration failed:', error);

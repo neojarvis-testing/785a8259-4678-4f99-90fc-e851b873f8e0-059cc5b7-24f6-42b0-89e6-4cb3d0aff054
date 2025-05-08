@@ -11,8 +11,9 @@ export class ManagerViewRequirementComponent implements OnInit {
   requirements: any[] = [];
   filteredRequirements: any[] = [];
   searchTerm: string = '';
+  selectedRequirementId: string | null = null;
 
-  constructor(private requirementService: RequirementService, private router: Router) {}
+  constructor(private requirementService: RequirementService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllRequirements();
@@ -23,6 +24,8 @@ export class ManagerViewRequirementComponent implements OnInit {
     this.requirementService.getAllRequirements().subscribe(
       (data) => {
         this.requirements = data;
+        this.filteredRequirements = [...data]
+        // console.log(this.filteredRequirements);
       },
       (error) => {
         console.error('Error fetching requirements', error);
@@ -32,29 +35,35 @@ export class ManagerViewRequirementComponent implements OnInit {
 
   //filtering the requirements
   filterRequirements(): void {
-    this.filteredRequirements = this.requirements.filter(req =>
-      req.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      req.description.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-      req.department.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
-  }
-
-  /** Navigate to edit requirement */
-  editRequirement(requirement: any): void {
-    this.router.navigate(['/add-requirement'], { state: { requirementData: requirement } });
-  }
-
-  /** Delete requirement */
-  deleteRequirement(requirementId: string): void {
-    if (confirm('Are you sure you want to delete this requirement?')) {
-      this.requirementService.deleteRequirement(requirementId).subscribe(
-        () => {
-          this.getAllRequirements();
-        },
-        (error) => {
-          console.error('Error deleting requirement', error);
-        }
+    if (this.searchTerm.trim().length > 0) { 
+      this.filteredRequirements = this.requirements.filter(req =>
+        req.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        req.description.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+        req.department.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
+    } else {
+      this.filteredRequirements = [...this.requirements];
     }
   }
+  
+  
+ /** Set selected requirement ID when clicking "Delete" */
+ setSelectedRequirement(requirementId: string): void {
+  this.selectedRequirementId = requirementId;
+}
+
+/** Delete requirement only after confirmation */
+deleteRequirement(): void {
+  if (this.selectedRequirementId) {
+    this.requirementService.deleteRequirement(this.selectedRequirementId).subscribe(
+      () => {
+        this.getAllRequirements(); // Refresh list after deletion
+        this.selectedRequirementId = null; // Reset selected ID
+      },
+      (error) => {
+        console.error('Error deleting requirement', error);
+      }
+    );
+  }
+}
 }

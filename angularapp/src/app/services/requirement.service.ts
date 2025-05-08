@@ -28,7 +28,7 @@ export class RequirementService {
 
   /** Add a new requirement */
   addRequirement(requirement: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/requirement/addRequirement`, requirement, { headers: this.getHeaders() });
+    return this.http.post<any>(`${this.baseUrl}/requirement/addRequirement`, requirement);
   }
 
   /** Update an existing requirement */

@@ -25,6 +25,7 @@ const routes: Routes = [
   {path : 'manager', component: ManagerNavbarComponent},
   {path : 'manager/view-requirement', component: ManagerViewRequirementComponent},
   {path : 'manager/add-requirement', component: ManagerAddRequirementComponent},
+  {path : 'manager/add-requirement/:id', component: ManagerAddRequirementComponent},
   {path : 'manager/view-candidate', component: ManagerViewCandidateComponent},
 
   //recruiter module routing paths
