@@ -1,0 +1,24 @@
+.manager-navbar {
+    background: linear-gradient(to right, rgb(220, 197, 245), rgb(107, 107, 236), royalblue);
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .nav-link {
+    margin-left: 15px;
+    font-weight: 500;
+  }
+  
+  .dropdown-menu {
+    background-color: white;
+    border-radius: 5px;
+  }
+  
+  .btn-primary,
+  .btn-danger {
+    margin: 0 10px;
+    font-weight: bold;
+  }

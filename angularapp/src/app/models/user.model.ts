@@ -6,3 +6,4 @@ export interface User {
     mobile: string;
     role: string;
 }
+

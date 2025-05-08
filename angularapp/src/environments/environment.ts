@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendUri1: 'https://8080-babeebebacfcbeadacbeabccbfbecbdaff.premiumproject.examly.io',
+  backendUri1: 'https://8080-babeebebacfcbeadacbeabccbfbecbdaff.premiumproject.examly.io/',
   backendUri2: 'https://8080-dbfaaebbcdbbffdbeadacbeabccbfbecbdaff.premiumproject.examly.io',
   backendUri3: 'https://8080-cfcbdadefbeadacbeabccbfbecbdaff.premiumproject.examly.io',
   backendUri4: 'https://8080-ceedccaabccbeadacbeabccbfbecbdaff.premiumproject.examly.io',
