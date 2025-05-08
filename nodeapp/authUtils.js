@@ -5,11 +5,11 @@ exports.generateToken = (userId) => jwt.sign({userId}, process.env.SECRET_KEY, {
 
 exports.validateToken = (req, res, next) => {
     try {
-        const authHeader = req.header.authorization
+        const authHeader = req.header('Authorization');
         if (!authHeader || !authHeader.startsWith('Bearer')) {
             return res.status(400).json({ message: "Authentication failed" })
         }
-        const token = authHeader.subString(7)
+        const token = authHeader.substring(7)
         jwt.verify(token, process.env.SECRET_KEY);
         next()
     } catch (error) {
