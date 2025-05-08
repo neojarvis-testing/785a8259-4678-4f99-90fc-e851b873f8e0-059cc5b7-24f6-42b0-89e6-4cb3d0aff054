@@ -1,6 +1,5 @@
 .gradient-custom {
     background: linear-gradient(to right, rgb(220, 197, 245), rgb(107, 107, 236), royalblue);
-    transition: background 2s ease-in-out;
 }
 .nav-item{
     cursor: pointer;
