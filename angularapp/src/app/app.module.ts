@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -17,8 +19,8 @@ import { RecruiterAddCandidateComponent } from './components/recruiter-add-candi
 import { RecruiterNavbarComponent } from './components/recruiter-navbar/recruiter-navbar.component';
 import { RecruiterViewCandidateComponent } from './components/recruiter-view-candidate/recruiter-view-candidate.component';
 import { RecruiterViewRequirementComponent } from './components/recruiter-view-requirement/recruiter-view-requirement.component';
-import { RecruiterViewRegistrationComponent } from './components/recruiter-view-registration/recruiter-view-registration.component';
 import { ErrorComponent } from './components/error/error.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +37,6 @@ import { ErrorComponent } from './components/error/error.component';
     RecruiterNavbarComponent,
     RecruiterViewCandidateComponent,
     RecruiterViewRequirementComponent,
-    RecruiterViewRegistrationComponent,
     RegistrationComponent
   ],
   imports: [
@@ -45,8 +46,9 @@ import { ErrorComponent } from './components/error/error.component';
     FormsModule,
     HttpClientModule,
     ToastrModule.forRoot({
-      positionClass:'toast-top-right'
-    })
+      positionClass: 'toast-top-right'
+    }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
