@@ -33,7 +33,7 @@ export class ManagerAddRequirementComponent implements OnInit {
         () => {
           this.submitted = true;
           this.showSuccessModal();
-        },
+        }, 
         (error) => {
           console.error('Error adding requirement', error);
         }

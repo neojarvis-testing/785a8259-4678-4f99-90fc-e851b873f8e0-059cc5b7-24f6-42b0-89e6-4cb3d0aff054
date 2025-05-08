@@ -23,6 +23,7 @@
     "@popperjs/core": "^2.11.8",
     "angularapp": "file:",
     "bootstrap": "^5.3.6",
+    "jquery": "^3.7.1",
     "karma-coverage": "2.2.0",
     "ngx-toastr": "^13.2.1",
     "puppeteer": "^19.7.5",
