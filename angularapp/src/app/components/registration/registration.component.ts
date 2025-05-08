@@ -52,7 +52,6 @@ export class RegistrationComponent implements AfterViewInit {
 
     this.authService.register(userData).subscribe({
       next: () => {
-        alert('User Registration is Successful!');
         this.submitted = false;
         localStorage.setItem('userEmail', this.signupForm.value.email);
         const modalElement = document.getElementById('successModal');
@@ -62,6 +61,7 @@ export class RegistrationComponent implements AfterViewInit {
       }
 
         // this.navigateToLogin();
+        this.navigateToLogin();
       },
       error: (error) => {
         console.error('Registration failed:', error);
