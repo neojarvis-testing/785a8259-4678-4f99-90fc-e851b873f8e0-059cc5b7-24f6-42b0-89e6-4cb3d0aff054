@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private toastr:ToastrService
+    // private toastr:ToastrService
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -41,11 +41,11 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', response.token);
           localStorage.setItem('role', response.role);
           localStorage.setItem('userName', response.userName);
-          if (response.role === 'Manager' || response.role === 'Recruiter') {
-            this.toastr.success(`${response.username} logged in as ${response.role} successfully`, 'Success');
-          } else {
-            this.toastr.success(`${response.username} logged in successfully`, 'Success');
-          }
+          // if (response.role === 'Manager' || response.role === 'Recruiter') {
+          //   this.toastr.success(`${response.username} logged in as ${response.role} successfully`, 'Success');
+          // } else {
+          //   this.toastr.success(`${response.username} logged in successfully`, 'Success');
+          // }
   
           this.router.navigate(['/home']);
           localStorage.setItem('role',response.role);
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
           console.log(msg.includes('invalid') || msg.includes('incorrect') || msg.includes('not found'));
           if (msg.includes('invalid') || msg.includes('incorrect') || msg.includes('not found')) {
             this.loginError = 'Invalid Email or Password';
-            this.toastr.error('Invalid Email or Password', 'Error');
+            // this.toastr.error('Invalid Email or Password', 'Error');
           }
           localStorage.removeItem('userEmail');
         }
