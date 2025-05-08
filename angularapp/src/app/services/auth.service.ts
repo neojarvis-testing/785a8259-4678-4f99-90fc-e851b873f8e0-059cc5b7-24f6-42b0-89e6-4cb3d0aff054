@@ -14,22 +14,22 @@ export class AuthService {
 
   private userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
-
-  constructor(private http: HttpClient, private router: Router) { }
+  // , private router: Router
+  constructor(private http: HttpClient) { }
 
   register(user: User): Observable<any> {
-    return this.http.post<any>(`${environment.backendUrl}/user/signup`, user);
+    return this.http.post<any>(`${environment.backendUri3}/user/signup`, user);
   }
 
   login(loginData: Login): Observable<any> {
-    return this.http.post<any>(`${environment.backendUrl}/user/login`, loginData);
+    return this.http.post<any>(`${environment.backendUri3}/user/login`, loginData);
   }
 
-  logout(): void {
-    localStorage.clear();
-    this.userSubject.next(null);
-    this.router.navigate(['/login']);
-  }
+  // logout(): void {
+  //   localStorage.clear();
+  //   this.userSubject.next(null);
+  //   this.router.navigate(['/login']);
+  // }
 
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
