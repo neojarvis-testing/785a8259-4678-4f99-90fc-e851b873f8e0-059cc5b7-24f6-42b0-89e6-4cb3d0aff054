@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/userModel');
+const { generateToken } = require('../authUtils')
 
 exports.getUserByEmailAndPassword = async (req, res) => {
     try {

@@ -1,1 +1,76 @@
+<!-- <router-outlet></router-outlet>
+<div *ngIf="isLandingPage()">
+    <nav id="navbar" class="bg-primary gradient-custom navbar px-3 mb-3">
+        <a class="navbar-brand text-black" routerLink="/login">ℍ𝕀ℝ𝔼𝔽𝕃𝕆𝕎</a>
+        <ul class="nav nav-pills">
+            <li class="nav-item">
+                <a class="nav-link text-white" id="about" data-bs-toggle="modal" data-bs-target="#aboutUsModal">About Us</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+        <div class="card shadow-lg p-4 text-center" style="width: 350px; background: white; border-radius: 10px;">
+            <h3 class="mb-3">Welcome to HireFlow</h3>
+            <p style="font-size: 16px;">Connecting top talent with leading companies efficiently.</p>
+            <button class="btn btn-primary" routerLink="/signup">Sign Up</button>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="aboutUsModal" tabindex="-1" aria-labelledby="aboutUsLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="aboutUsLabel">About HireFlow</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    HireFlow is your go-to platform for seamless hiring solutions, connecting top talent with leading companies efficiently.
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div> -->
 <router-outlet></router-outlet>
+<div *ngIf="isLandingPage()">
+
+    <nav class="navbar navbar-expand-lg navbar-light manager-navbar px-3">
+    <a class="navbar-brand text-white fw-bold" routerLink="/">HIREFLOW</a>
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-white fw-medium" routerLink="/login">Log In</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white fw-medium" id="about" data-bs-toggle="modal" data-bs-target="#aboutUsModal">About Us</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+    
+    <div class="landing-background">
+        <div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+            <div class="card shadow-lg p-5 text-center" style="width: 400px; background: rgba(255,255,255,0.9); border-radius: 15px; border: none;">
+                <h3 class="mb-4 fw-bold">Welcome to HireFlow</h3>
+                <p class="mb-4" style="font-size: 16px;">Connecting managers and recruiters to optimize hiring workflows effortlessly.</p>
+                <button class="btn btn-primary btn-lg rounded-pill px-4" routerLink="/signup">Sign Up</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="aboutUsModal" tabindex="-1" aria-labelledby="aboutUsLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header gradient-custom text-white">
+                    <h5 class="modal-title fw-bold" id="aboutUsLabel">About HireFlow</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    HireFlow is a powerful platform designed to streamline hiring processes by facilitating the creation, management, and dissemination of job requirements. By providing an intuitive interface, HireFlow empowers recruitment teams and managers to efficiently post job requirements and oversee the recruitment workflow. Whether you're a recruitment team member or a program manager, HireFlow offers comprehensive tools to facilitate the approval, tracking, and management of job requirements. Through fostering collaboration between recruitment teams and managers, HireFlow creates an efficient environment where job opportunities are efficiently managed and fulfilled.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+>>>>>>> 13f47753a18a7dccc440f15199e94bb684a9ed8d

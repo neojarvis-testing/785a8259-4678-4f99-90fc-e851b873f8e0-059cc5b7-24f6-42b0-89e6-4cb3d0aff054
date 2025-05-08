@@ -1,15 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manager-navbar',
   templateUrl: './manager-navbar.component.html',
-  styleUrls: ['./manager-navbar.component.css']
+  styleUrls: ['./manager-navbar.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ManagerNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  logout(){
+    
+  }
+
+  confirmLogout(): void {
+    // Clear user session
+    localStorage.removeItem('userToken');
+    sessionStorage.clear();
+
+    // Navigate to login page
+    this.router.navigate(['/login']);
   }
 
 }
