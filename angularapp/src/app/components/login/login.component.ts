@@ -25,14 +25,10 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]]
     });
+    this.loginForm.patchValue({ email: localStorage.getItem('userEmail') ?? '' });
   }
 
-  ngOnInit(): void { 
-    const savedEmail=localStorage.getItem('userEmail');
-    if(savedEmail){
-      this.loginForm.patchValue({email: savedEmail});
-    }
-  }
+  ngOnInit(): void { }
 
   onSubmit(): void {
     this.loginError = '';
