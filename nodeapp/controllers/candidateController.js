@@ -5,7 +5,7 @@ exports.getAllCandidates = async (req, res) => {
         const candidates = await Candidate.find();
         res.status(200).json(candidates)
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 }
 
@@ -17,7 +17,7 @@ exports.getCandidateById = async (req, res) => {
         }
         res.status(200).json(candidate)
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 }
 
@@ -26,7 +26,7 @@ exports.addCandidate = async (req, res) => {
         await Candidate.create(req.body);
         res.status(200).json({ message: `Candidate Added Successfully` })
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 }
 
@@ -38,7 +38,7 @@ exports.updateCandidate = async (req, res) => {
         }
         res.status(200).json({ message: `Success`, candidate })
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 }
 
@@ -50,6 +50,6 @@ exports.deleteCandidate = async (req, res) => {
         }
         res.status(200).json({ message: `Candidate Deleted Successfully` })
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ message: error.message });
     }
 }

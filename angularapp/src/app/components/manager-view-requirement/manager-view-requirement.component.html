@@ -1,1 +1,43 @@
-<p>manager-view-requirement works!</p>
+<!-- manager-navbar -->
+<app-manager-navbar></app-manager-navbar>
+
+<!-- view requirements container  -->
+<div class="container mt-5">
+    <h2 class="text-center">Manage Requirements</h2>
+
+    <!-- Search Bar -->
+        <div class="mb-3 w-50">
+            <input type="text" class="form-control" placeholder="Search requirements..." [(ngModel)]="searchTerm"
+                (input)="filterRequirements()">
+        </div>
+
+    <!-- Requirements Table -->
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Requirement Title</th>
+                <th>Description</th>
+                <th>Department</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let req of filteredRequirements; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ req.title }}</td>
+                <td>{{ req.description }}</td>
+                <td>{{ req.department }}</td>
+                <td>{{ req.status }}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm me-2" (click)="editRequirement(req)">Edit</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteRequirement(req.id)">Delete</button>
+                </td>
+            </tr>
+            <tr *ngIf="filteredRequirements.length === 0">
+                <td colspan="6" class="text-center text-danger fw-bold">Oops! No records found.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

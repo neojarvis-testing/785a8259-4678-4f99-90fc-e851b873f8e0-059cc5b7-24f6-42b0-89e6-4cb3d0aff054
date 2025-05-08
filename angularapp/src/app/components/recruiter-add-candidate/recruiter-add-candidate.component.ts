@@ -7,7 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecruiterAddCandidateComponent implements OnInit {
 
-  constructor() { }
+  candidate = {
+    name: '',
+    email: '',
+    phone: '',
+    education: '',
+    experience: '',
+    techStack: '',
+    resumeUrl: ''
+  };
+
+  onSubmit(form: any): void {
+    if (form.valid) {
+      console.log('Form Submitted!', this.candidate);
+    }
+  }
 
   ngOnInit(): void {
   }
