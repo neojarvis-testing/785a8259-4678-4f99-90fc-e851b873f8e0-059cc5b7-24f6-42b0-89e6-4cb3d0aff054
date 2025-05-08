@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recruiter-navbar',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecruiterNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit(): void {
   }
 
+  confirmLogout(): void {
+    // Clear user session
+    localStorage.removeItem('userToken');
+    sessionStorage.clear();
+
+    // Navigate to login page
+    this.router.navigate(['/login']);
+  }
 }

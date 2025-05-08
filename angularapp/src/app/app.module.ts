@@ -17,7 +17,6 @@ import { RecruiterAddCandidateComponent } from './components/recruiter-add-candi
 import { RecruiterNavbarComponent } from './components/recruiter-navbar/recruiter-navbar.component';
 import { RecruiterViewCandidateComponent } from './components/recruiter-view-candidate/recruiter-view-candidate.component';
 import { RecruiterViewRequirementComponent } from './components/recruiter-view-requirement/recruiter-view-requirement.component';
-import { RecruiterViewRegistrationComponent } from './components/recruiter-view-registration/recruiter-view-registration.component';
 import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
@@ -35,7 +34,6 @@ import { ErrorComponent } from './components/error/error.component';
     RecruiterNavbarComponent,
     RecruiterViewCandidateComponent,
     RecruiterViewRequirementComponent,
-    RecruiterViewRegistrationComponent,
     RegistrationComponent
   ],
   imports: [

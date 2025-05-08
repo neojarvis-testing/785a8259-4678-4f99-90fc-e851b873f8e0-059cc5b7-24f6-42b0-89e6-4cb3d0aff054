@@ -1,0 +1,21 @@
+.container {
+    max-width: 700px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .list-group-item {
+    background-color: #f8f9fa;
+    border-left: 4px solid #007bff;
+  }
+  
+  .modal-content {
+    border-radius: 8px;
+  }
+  
+  .btn-primary {
+    margin-top: 15px;
+  }
+  

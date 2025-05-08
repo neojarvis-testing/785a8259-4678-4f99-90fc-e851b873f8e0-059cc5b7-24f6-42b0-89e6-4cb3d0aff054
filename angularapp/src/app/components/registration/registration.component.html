@@ -8,8 +8,8 @@
         <form [formGroup]="signupForm" class="row g-3">
             <!-- Username -->
             <div class="col-12">
-                <label class="form-label">Username</label>
-                <input type="text" class="form-control" formControlName="userName">
+                <label class="form-label">Username<span class="text-danger">*</span></label>
+                <input type="text" class="form-control" formControlName="userName" placeholder="UserName">
                 <div *ngIf="signupForm.get('userName')?.invalid && signupForm.get('userName')?.touched"
                     class="text-danger">
                     Username is required.
@@ -18,8 +18,8 @@
 
             <!-- Email -->
             <div class="col-12">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control" formControlName="email">
+                <label class="form-label">Email<span class="text-danger">*</span></label>
+                <input type="email" class="form-control" formControlName="email" placeholder="Email">
                 <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="text-danger">
                     Enter a valid email.
                 </div>
@@ -27,8 +27,8 @@
 
             <!-- Mobile Number -->
             <div class="col-12">
-                <label class="form-label">Mobile Number</label>
-                <input type="tel" class="form-control" formControlName="mobile">
+                <label class="form-label">Mobile Number<span class="text-danger">*</span></label>
+                <input type="tel" class="form-control" formControlName="mobile" placeholder="Mobile">
                 <div *ngIf="signupForm.get('mobile')?.invalid && signupForm.get('mobile')?.touched" class="text-danger">
                     Enter a valid 10-digit mobile number.
                 </div>
@@ -36,18 +36,25 @@
 
             <!-- Password -->
             <div class="col-12">
-                <label class="form-label">Password</label>
-                <input type="password" class="form-control" formControlName="password">
-                <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
+                <label class="form-label">Password<span class="text-danger">*</span></label>
+                <input type="password" class="form-control" formControlName="password" placeholder="Password">
+                <div *ngIf="!signupForm.get('password')?.dirty && signupForm.get('password')?.touched"
                     class="text-danger">
-                    Password is required.
+                    Password is empty.
                 </div>
+                <div *ngIf="signupForm.get('password')?.hasError('pattern') && signupForm.get('password')?.touched"
+                    class="text-danger">
+                    Password must be at least 8 characters long and include at least one letter, one number and one special character.
+                </div>
+                <span class="text-danger mt-1">
+                    *Note :- Password must contain atleast 1 Uppercase, 1 Lowercase, 1 special character and Numeric value.
+                </span>
             </div>
 
             <!-- Confirm Password -->
             <div class="col-12">
-                <label class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" formControlName="confirmPassword">
+                <label class="form-label">Confirm Password<span class="text-danger">*</span></label>
+                <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
                 <div *ngIf="signupForm.errors?.mismatch && signupForm.get('confirmPassword')?.touched"
                     class="text-danger">
                     Passwords do not match.
@@ -56,7 +63,7 @@
 
             <!-- Role Dropdown -->
             <div class="col-12">
-                <label class="form-label">Role</label>
+                <label class="form-label">Role<span class="text-danger">*</span></label>
                 <select class="form-select" formControlName="role">
                     <option value="">Select Role</option>
                     <option value="Manager">Manager</option>
@@ -84,7 +91,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="navigateToLogin()"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        (click)="navigateToLogin()"></button>
                 </div>
                 <h5 class="modal-title text-white">User Registration Successful</h5>
             </div>
@@ -92,7 +100,8 @@
                 Your account has been successfully created!
             </div>
             <div class="modal-body d-flex justify-content-center">
-                <button type="button" class="btn btn-light ok"  data-bs-dismiss="modal" (click)="navigateToLogin()">OK</button>
+                <button type="button" class="btn btn-light ok" data-bs-dismiss="modal"
+                    (click)="navigateToLogin()">OK</button>
             </div>
         </div>
     </div>
