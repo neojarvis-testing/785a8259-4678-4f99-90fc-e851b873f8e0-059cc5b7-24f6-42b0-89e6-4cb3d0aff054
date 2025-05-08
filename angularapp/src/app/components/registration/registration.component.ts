@@ -52,7 +52,6 @@ export class RegistrationComponent implements AfterViewInit {
 
     this.authService.register(userData).subscribe({
       next: () => {
-        alert('User Registration is Successful!');
         this.submitted = false;
         localStorage.setItem('userEmail', this.signupForm.value.email);
         this.navigateToLogin();

@@ -41,3 +41,4 @@ export class RequirementService {
     return this.http.delete<any>(`${this.baseUrl}/requirement/deleteRequirement/${requirementId}`, { headers: this.getHeaders() });
   }
 }
+
