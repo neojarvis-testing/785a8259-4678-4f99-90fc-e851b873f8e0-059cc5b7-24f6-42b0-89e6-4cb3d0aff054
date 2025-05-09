@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Candidate } from 'src/app/models/candidate.model';
 import { CandidateService } from 'src/app/services/candidate.service';
 
 @Component({
@@ -8,53 +9,99 @@ import { CandidateService } from 'src/app/services/candidate.service';
   styleUrls: ['./manager-view-candidate.component.css']
 })
 export class ManagerViewCandidateComponent implements OnInit {
-  candidates: any[] = [];
-  filteredCandidates: any[] = [];
-  searchTerm: string = '';
+  
+  candidates: Candidate[] = [];
+  filteredCandidates: Candidate[] = [];
+  searchText: string = '';
+  currentPage: number = 1;
+  pageSize: number = 3;
+  totalPages: number = 1;
+  pages: number[] = [];
+  isDeleteModal:boolean=false;
+  selectedCandidateId: string | null = null;
 
   constructor(private candidateService: CandidateService, private router: Router) {}
 
   ngOnInit(): void {
-    this.getAllCandidates();
+    this.fetchCandidates();
   }
 
-  /** Fetch all candidates */
-  getAllCandidates(): void {
-    this.candidateService.getAllCandidates().subscribe(
-      (data) => {
-        this.candidates = data;
-        this.filteredCandidates = [...data]; // Initialize filtered list
-      },
-      (error) => {
-        console.error('Error fetching candidates', error);
-      }
+  fetchCandidates(): void {
+    this.candidateService.getAllCandidates().subscribe((res) => {
+      this.candidates = res;
+      this.applyFilter();
+    });
+  }
+
+  applyFilter(): void {
+    const search = this.searchText.toLowerCase();
+    this.filteredCandidates = this.candidates.filter(candidate =>
+      candidate.name.toLowerCase().includes(search) ||
+      candidate.email.toLowerCase().includes(search) ||
+      candidate.phone.includes(search)
     );
+    this.calculatePagination();
   }
 
-  /** Filter candidates */
-  filterCandidates(): void {
-    if (this.searchTerm.trim().length > 0) {
-      this.filteredCandidates = this.candidates.filter(candidate =>
-        candidate.name?.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        candidate.email?.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-        candidate.techStack?.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    } else {
-      this.filteredCandidates = [...this.candidates];
-    }
+  calculatePagination(): void {
+    this.totalPages = Math.ceil(this.filteredCandidates.length / this.pageSize);
+    this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+    this.currentPage = 1;
   }
 
-  /** Toggle candidate status */
+  get paginatedCandidates(): Candidate[] {
+    const start = (this.currentPage - 1) * this.pageSize;
+    return this.filteredCandidates.slice(start, start + this.pageSize);
+  }
+
+  onEdit(id: string): void {
+    this.router.navigate(['/recruiter/addCandidate', id]);
+  }
+
+  confirmDelete(id: string): void {
+    this.selectedCandidateId = id;
+    this.isDeleteModal=true;
+  }
+
+  deleteCandidate(): void {
+    console.log("Trigger",this.selectedCandidateId);
+    
+    if (!this.selectedCandidateId) return;
+    this.candidateService.deleteCandidate(this.selectedCandidateId).subscribe(() => {
+      this.fetchCandidates();
+      this.isDeleteModal=false
+    });
+    this.router.navigate(['/recruiter/getAllCandidates'])
+  }
+
+  changePage(page: number): void {
+    this.currentPage = page;
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) this.currentPage--;
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) this.currentPage++;
+  }
+
+  cancelDelete():void{
+    this.selectedCandidateId=null;
+    this.isDeleteModal=false;
+  }
+
   toggleStatus(candidate: any): void {
-    candidate.status = candidate.status === 'Active' ? 'Inactive' : 'Active';
-
+    candidate.status = candidate.status === 'Approved' ? 'Rejected' : 'Approved';
+  
     this.candidateService.updateCandidate(candidate._id, { status: candidate.status }).subscribe(
       () => {
         console.log(`Status updated to ${candidate.status}`);
       },
       (error) => {
-        console.error('Error updating candidate status', error);
+        console.error('Error updating status', error);
       }
     );
   }
+
 }
