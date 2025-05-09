@@ -1,15 +1,15 @@
-<!-- manager-navbar -->
+<!-- Manager Navbar -->
 <app-manager-navbar></app-manager-navbar>
 
-<!-- view requirements container  -->
+<!-- View Requirements Container -->
 <div class="container mt-5">
     <h2 class="text-center">Manage Requirements</h2>
 
     <!-- Search Bar -->
-        <div class="mb-3 w-50">
-            <input type="text" class="form-control" placeholder="Search requirements..." [(ngModel)]="searchTerm"
-                (input)="filterRequirements()">
-        </div>
+    <div class="mb-3 w-50">
+        <input type="text" class="form-control" placeholder="Search requirements..." [(ngModel)]="searchTerm"
+            (input)="filterRequirements()">
+    </div>
 
     <!-- Requirements Table -->
     <table class="table table-bordered table-striped">
@@ -31,8 +31,8 @@
                 <td>{{ req.department }}</td>
                 <td>{{ req.status }}</td>
                 <td>
-                    <button class="btn btn-warning btn-sm me-2" (click)="editRequirement(req)">Edit</button>
-                    <button class="btn btn-danger btn-sm" (click)="deleteRequirement(req.id)">Delete</button>
+                    <button class="btn btn-warning btn-sm me-2" [routerLink]="['/manager/add-requirement', req._id]">Edit</button>
+                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="setSelectedRequirement(req._id)">Delete</button>
                 </td>
             </tr>
             <tr *ngIf="filteredRequirements.length === 0">
@@ -40,4 +40,23 @@
             </tr>
         </tbody>
     </table>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-dark">
+                Are you sure you want to delete this requirement?
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteRequirement()">Yes, Delete</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div> 
 </div>

@@ -12,7 +12,7 @@ export class AuthService {
 
   private userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
-
+  // , private router: Router
   constructor(private http: HttpClient) { }
 
   register(user: User): Observable<any> {
@@ -23,6 +23,11 @@ export class AuthService {
     return this.http.post<any>(`${environment.backendUri5}/user/login`, loginData);
   }
 
+  // logout(): void {
+  //   localStorage.clear();
+  //   this.userSubject.next(null);
+  //   this.router.navigate(['/login']);
+  // }
 
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token');

@@ -2,7 +2,7 @@
 <app-navbar></app-navbar>
 
 <!-- Centered Container -->
-<div class="d-flex justify-content-center align-items-center">
+<div class=" d-flex justify-content-center align-items-center">
     <div class="container p-4 shadow rounded bg-light w-50">
         <h2 class="text-center mb-4">Signup</h2>
         <form [formGroup]="signupForm" class="row g-3" (submit)="onSignUp()">
@@ -49,7 +49,7 @@
 
             <!-- Password -->
             <div class="col-12">
-                <label class="form-label">Mobile</label>
+                <label class="form-label">Password</label>
                 <input type="password" class="form-control" name="password" autocomplete="new-password" formControlName="password" placeholder="Password">
                 <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
                     class="text-danger">

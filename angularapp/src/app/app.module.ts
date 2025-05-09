@@ -15,7 +15,7 @@ import { ManagerAddRequirementComponent } from './components/manager-add-require
 import { ManagerNavbarComponent } from './components/manager-navbar/manager-navbar.component';
 import { ManagerViewCandidateComponent } from './components/manager-view-candidate/manager-view-candidate.component';
 import { ManagerViewRequirementComponent } from './components/manager-view-requirement/manager-view-requirement.component';
-import { RecruiterAddCandidateComponent } from './components/recruiter-add-candidate/recruiter-add-candidate.component';
+import { AddCandidateComponent } from './components/recruiter-add-candidate/recruiter-add-candidate.component';
 import { RecruiterNavbarComponent } from './components/recruiter-navbar/recruiter-navbar.component';
 import { RecruiterViewCandidateComponent } from './components/recruiter-view-candidate/recruiter-view-candidate.component';
 import { RecruiterViewRequirementComponent } from './components/recruiter-view-requirement/recruiter-view-requirement.component';
@@ -33,7 +33,7 @@ import { ErrorComponent } from './components/error/error.component';
     ManagerViewCandidateComponent,
     ManagerViewRequirementComponent,
     NavbarComponent,
-    RecruiterAddCandidateComponent,
+    AddCandidateComponent,
     RecruiterNavbarComponent,
     RecruiterViewCandidateComponent,
     RecruiterViewRequirementComponent,

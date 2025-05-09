@@ -28,7 +28,7 @@ export class RequirementService {
 
   /** Add a new requirement */
   addRequirement(requirement: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/requirement/addRequirement`, requirement, { headers: this.getHeaders() });
+    return this.http.post<any>(`${this.baseUrl}/requirement/addRequirement`, requirement);
   }
 
   /** Update an existing requirement */
@@ -41,3 +41,4 @@ export class RequirementService {
     return this.http.delete<any>(`${this.baseUrl}/requirement/deleteRequirement/${requirementId}`, { headers: this.getHeaders() });
   }
 }
+

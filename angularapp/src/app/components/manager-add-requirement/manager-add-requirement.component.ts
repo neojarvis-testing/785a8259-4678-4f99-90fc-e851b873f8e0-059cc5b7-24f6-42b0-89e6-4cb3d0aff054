@@ -11,11 +11,13 @@ import { RequirementService } from 'src/app/services/requirement.service';
 export class ManagerAddRequirementComponent implements OnInit {
   requirementForm: FormGroup;
   submitted = false;
+  ngOnInit(): void {}
 
   constructor(
     private requirementService: RequirementService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    
   ) {
     this.requirementForm = this.fb.group({
       title: ['', Validators.required],
@@ -24,7 +26,6 @@ export class ManagerAddRequirementComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
 
   addRequirement(): void {
     if (this.requirementForm.valid) {
@@ -32,12 +33,12 @@ export class ManagerAddRequirementComponent implements OnInit {
       this.requirementService.addRequirement(newRequirement).subscribe(
         () => {
           this.submitted = true;
-          this.showSuccessModal();
         },
         (error) => {
           console.error('Error adding requirement', error);
         }
-      );
+        );
+        this.showSuccessModal();
     }
   }
 
