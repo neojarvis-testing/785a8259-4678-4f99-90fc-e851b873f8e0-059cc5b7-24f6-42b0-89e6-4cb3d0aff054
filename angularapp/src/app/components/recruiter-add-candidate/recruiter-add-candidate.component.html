@@ -5,6 +5,7 @@
     <h2 class="mb-3 text-center">
       {{ isEditMode ? 'Edit Candidate' : 'Add New Candidate' }}
     </h2>
+    <button *ngIf="isEditMode" type="button" class="btn-close" [routerLink]="['recruiter/getAllCandidates']"></button>
 
     <!-- Name -->
     <div class="mb-3">
