@@ -15,10 +15,11 @@ const requirementSchema = new mongoose.Schema({
     },
     postedDate: {
         type: Date,
-        required: true
+        // required: true
     },
     status: {
         type: String,
+        default : 'Active',
         required: true
     }
 }, { timestamps: true });

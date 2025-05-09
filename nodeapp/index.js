@@ -17,6 +17,7 @@ app.use(cors({
     exposedHeaders: ['Content-Type', 'X-Powered-By'],
     credentials: false
 }))
+app.options('*',cors());
 
 app.use('/user', userRouter);
 app.use('/requirement', requirementRouter);

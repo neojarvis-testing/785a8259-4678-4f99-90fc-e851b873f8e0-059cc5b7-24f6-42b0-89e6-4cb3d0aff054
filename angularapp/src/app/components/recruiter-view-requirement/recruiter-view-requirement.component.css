@@ -1,0 +1,9 @@
+.table th, .table td {
+    vertical-align: middle;
+  }
+  
+  input[type="text"] {
+    max-width: 300px;
+   
+    display: block;
+  }
