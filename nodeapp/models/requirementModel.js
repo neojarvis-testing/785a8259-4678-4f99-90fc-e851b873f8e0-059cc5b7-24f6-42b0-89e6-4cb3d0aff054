@@ -19,7 +19,8 @@ const requirementSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        // required: true
+        default : 'Active',
+        required: true
     }
 }, { timestamps: true });
 

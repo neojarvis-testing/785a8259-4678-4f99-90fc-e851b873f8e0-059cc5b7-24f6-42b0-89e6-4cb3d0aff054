@@ -29,10 +29,19 @@
                 <td>{{ req.title }}</td>
                 <td>{{ req.description }}</td>
                 <td>{{ req.department }}</td>
-                <td>{{ req.status }}</td>
                 <td>
-                    <button class="btn btn-warning btn-sm me-2" [routerLink]="['/manager/add-requirement', req._id]">Edit</button>
-                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="setSelectedRequirement(req._id)">Delete</button>
+                    {{ req.status }}
+                </td>
+                <td>
+                    <button class="btn btn-warning btn-sm me-2"
+                        [routerLink]="['/manager/add-requirement', req._id]">Edit</button>
+                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                        (click)="setSelectedRequirement(req._id)">Delete</button>
+                    <button class="btn btn-sm"
+                        [ngClass]="{'btn-success': req.status === 'Closed', 'btn-secondary': req.status === 'Active'}"
+                        (click)="toggleStatus(req)">
+                        {{ req.status === 'Active' ? 'Mark as Closed' : 'Mark as Active' }}
+                    </button>
                 </td>
             </tr>
             <tr *ngIf="filteredRequirements.length === 0">
@@ -44,7 +53,7 @@
 
 <!-- Delete Confirmation Modal -->
 <div class="modal fade" id="deleteModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Confirm Deletion</h5>
@@ -54,9 +63,10 @@
                 Are you sure you want to delete this requirement?
             </div>
             <div class="modal-footer d-flex justify-content-center">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteRequirement()">Yes, Delete</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteRequirement()">Yes,
+                    Delete</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
             </div>
         </div>
-    </div> 
+    </div>
 </div>
