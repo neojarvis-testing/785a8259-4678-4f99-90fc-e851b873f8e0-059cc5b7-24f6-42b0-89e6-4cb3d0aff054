@@ -10,8 +10,10 @@ import { ManagerAddRequirementComponent } from './components/manager-add-require
 import { ManagerNavbarComponent } from './components/manager-navbar/manager-navbar.component';
 import { RecruiterNavbarComponent } from './components/recruiter-navbar/recruiter-navbar.component';
 import { RecruiterViewCandidateComponent } from './components/recruiter-view-candidate/recruiter-view-candidate.component';
-import { AddCandidateComponent } from './components/recruiter-add-candidate/recruiter-add-candidate.component';
+import { RecruiterAddCandidateComponent } from './components/recruiter-add-candidate/recruiter-add-candidate.component';
 import { RecruiterViewRequirementComponent } from './components/recruiter-view-requirement/recruiter-view-requirement.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 const routes: Routes = [
   //common routing paths
@@ -32,9 +34,11 @@ const routes: Routes = [
   {path : 'recruiter', component: RecruiterNavbarComponent},
   // {path : 'recruiter/home', component: HomeComponent},
   {path : 'recruiter/getAllCandidates', component: RecruiterViewCandidateComponent},
-  {path : 'recruiter/addCandidate', component: AddCandidateComponent},
-  {path : 'recruiter/addCandidate/:id', component: AddCandidateComponent},
-  {path: 'recruiter/getAllRequirements', component: RecruiterViewRequirementComponent}
+  {path : 'recruiter/addCandidate', component: RecruiterAddCandidateComponent},
+  {path : 'recruiter/addCandidate/:id', component: RecruiterAddCandidateComponent},
+  {path: 'recruiter/getAllRequirements', component: RecruiterViewRequirementComponent},
+  {path: 'forgotPassword', component: ForgotPasswordComponent},
+  {path:'resetPassword',component:ResetPasswordComponent}
 ];
 
 @NgModule({

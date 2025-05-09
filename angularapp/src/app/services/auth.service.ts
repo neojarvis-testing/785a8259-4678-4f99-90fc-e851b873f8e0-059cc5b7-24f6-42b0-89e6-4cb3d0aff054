@@ -16,11 +16,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   register(user: User): Observable<any> {
-    return this.http.post<any>(`${environment.backendUri2}/user/signup`, user);
+    return this.http.post<any>(`${environment.backendUri3}/user/signup`, user);
   }
 
   login(loginData: Login): Observable<any> {
-    return this.http.post<any>(`${environment.backendUri2}/user/login`, loginData);
+    return this.http.post<any>(`${environment.backendUri3}/user/login`, loginData);
   }
 
   // logout(): void {

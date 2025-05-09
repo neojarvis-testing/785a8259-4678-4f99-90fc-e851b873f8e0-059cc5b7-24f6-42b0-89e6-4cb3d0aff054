@@ -650,6 +650,7 @@ describe('Candidate_Model_Test', () => {
       educationalQualification: 'Bachelor of Engineering',
       experience: '5 years',
       techStack: 'JavaScript, Node.js',
+      resumeUrl: 'https://8080-cfcbdadefbeadacbeabccbfbecbdaff.premiumproject.examly.io/resume.pdf',
       status: 'Pending'
     };
 
