@@ -11,7 +11,7 @@ declare var $: any;
   templateUrl: './recruiter-add-candidate.component.html',
   styleUrls: ['./recruiter-add-candidate.component.css']
 })
-export class AddCandidateComponent implements OnInit {
+export class RecruiterAddCandidateComponent implements OnInit {
   candidateForm: FormGroup;
   submitted = false;
   isEditMode = false;

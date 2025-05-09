@@ -9,7 +9,7 @@ import { CandidateService } from 'src/app/services/candidate.service';
   styleUrls: ['./manager-view-candidate.component.css']
 })
 export class ManagerViewCandidateComponent implements OnInit {
-  
+
   candidates: Candidate[] = [];
   filteredCandidates: Candidate[] = [];
   searchText: string = '';
@@ -17,10 +17,10 @@ export class ManagerViewCandidateComponent implements OnInit {
   pageSize: number = 3;
   totalPages: number = 1;
   pages: number[] = [];
-  isDeleteModal:boolean=false;
+  isDeleteModal: boolean = false;
   selectedCandidateId: string | null = null;
 
-  constructor(private candidateService: CandidateService, private router: Router) {}
+  constructor(private candidateService: CandidateService, private router: Router) { }
 
   ngOnInit(): void {
     this.fetchCandidates();
@@ -60,16 +60,16 @@ export class ManagerViewCandidateComponent implements OnInit {
 
   confirmDelete(id: string): void {
     this.selectedCandidateId = id;
-    this.isDeleteModal=true;
+    this.isDeleteModal = true;
   }
 
   deleteCandidate(): void {
-    console.log("Trigger",this.selectedCandidateId);
-    
+    console.log("Trigger", this.selectedCandidateId);
+
     if (!this.selectedCandidateId) return;
     this.candidateService.deleteCandidate(this.selectedCandidateId).subscribe(() => {
       this.fetchCandidates();
-      this.isDeleteModal=false
+      this.isDeleteModal = false
     });
     this.router.navigate(['/recruiter/getAllCandidates'])
   }
@@ -86,14 +86,14 @@ export class ManagerViewCandidateComponent implements OnInit {
     if (this.currentPage < this.totalPages) this.currentPage++;
   }
 
-  cancelDelete():void{
-    this.selectedCandidateId=null;
-    this.isDeleteModal=false;
+  cancelDelete(): void {
+    this.selectedCandidateId = null;
+    this.isDeleteModal = false;
   }
 
   toggleStatus(candidate: any): void {
     candidate.status = candidate.status === 'Approved' ? 'Rejected' : 'Approved';
-  
+
     this.candidateService.updateCandidate(candidate._id, { status: candidate.status }).subscribe(
       () => {
         console.log(`Status updated to ${candidate.status}`);
