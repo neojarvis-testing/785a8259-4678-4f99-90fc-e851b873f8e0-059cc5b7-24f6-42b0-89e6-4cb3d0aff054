@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,16 +6,14 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'angularapp';
+  isLanding: boolean = false;
   constructor(private router: Router) {
-      
   }
-  
-  isLandingPage():boolean{
-    
-      return this.router.url === '/';
-
+  ngOnInit(): void {
+    this.router.events.subscribe(() => {
+      this.isLanding = this.router.url === '/'
+    })
   }
-
 }
