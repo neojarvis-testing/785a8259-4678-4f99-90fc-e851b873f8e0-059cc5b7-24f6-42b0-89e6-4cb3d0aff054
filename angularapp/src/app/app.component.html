@@ -32,8 +32,10 @@
         </div>
     </div>
 </div> -->
-<router-outlet></router-outlet>
-<div *ngIf="isLandingPage()">
+
+    <router-outlet></router-outlet>
+
+<div *ngIf="isLanding">
 
     <nav class="navbar navbar-expand-lg navbar-light manager-navbar px-3">
     <a class="navbar-brand text-white fw-bold" routerLink="/">HIREFLOW</a>
