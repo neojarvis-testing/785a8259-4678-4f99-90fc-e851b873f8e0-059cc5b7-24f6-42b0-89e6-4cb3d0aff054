@@ -34,8 +34,8 @@
           <td><a [href]="candidate.resumeUrl" target="_blank">View Resume</a></td>
           <td>{{ candidate.applicationDate | date:'MMM dd, yyyy' }}</td>
           <td>{{ candidate.status }}</td>
-          <td class="d-flex justify-content-center align-items-center" >
-            <button class="btn btn-success btn-sm me-1" (click)="onEdit(candidate._id)">Edit</button>
+          <td>
+            <button class="btn btn-success btn-sm me-1 mb-2" (click)="onEdit(candidate._id)">Edit</button>
             <button class="btn btn-danger btn-sm" (click)="confirmDelete(candidate._id)">Delete</button>
           </td>
         </tr>
