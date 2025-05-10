@@ -66,4 +66,17 @@ deleteRequirement(): void {
     );
   }
 }
+
+toggleStatus(requirement: any): void {
+  requirement.status = requirement.status === 'Active' ? 'Closed' : 'Active';
+
+  this.requirementService.updateRequirement(requirement._id, { status: requirement.status }).subscribe(
+    () => {
+      console.log(`Status updated to ${requirement.status}`);
+    },
+    (error) => {
+      console.error('Error updating status', error);
+    }
+  );
+}
 }

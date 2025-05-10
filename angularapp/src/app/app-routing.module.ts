@@ -11,13 +11,17 @@ import { RecruiterNavbarComponent } from './components/recruiter-navbar/recruite
 import { RecruiterViewCandidateComponent } from './components/recruiter-view-candidate/recruiter-view-candidate.component';
 import { RecruiterAddCandidateComponent } from './components/recruiter-add-candidate/recruiter-add-candidate.component';
 import { RecruiterViewRequirementComponent } from './components/recruiter-view-requirement/recruiter-view-requirement.component';
+import { ErrorComponent } from './components/error/error.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
+  // Landing Page Routing
+  { path: '', component: AppComponent },
+
   //common routing paths
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: RegistrationComponent },
   { path: 'home', component: HomeComponent },
-  { path: '', redirectTo: '/', pathMatch: 'full' },
 
   //manager module routing paths
   // {path : 'manager/home', component: HomeComponent},
@@ -28,12 +32,15 @@ const routes: Routes = [
   {path : 'manager/view-candidate', component: ManagerViewCandidateComponent},
 
   //recruiter module routing paths
-  {path : 'recruiter', component: RecruiterNavbarComponent},
   // {path : 'recruiter/home', component: HomeComponent},
+  {path : 'recruiter', component: RecruiterNavbarComponent},
   {path : 'recruiter/getAllCandidates', component: RecruiterViewCandidateComponent},
   {path : 'recruiter/addCandidate', component: RecruiterAddCandidateComponent},
   {path : 'recruiter/addCandidate/:id', component: RecruiterAddCandidateComponent},
-  {path: 'recruiter/getAllRequirements', component: RecruiterViewRequirementComponent}
+  {path: 'recruiter/getAllRequirements', component: RecruiterViewRequirementComponent},
+
+  //error component routing
+  {path : '**' , component : ErrorComponent}
 ];
 
 @NgModule({

@@ -23,7 +23,8 @@ exports.getCandidateById = async (req, res) => {
 
 exports.addCandidate = async (req, res) => {
     try {
-        await Candidate.create(req.body);
+        const {name,email,phone,educationalQualification,experience,techStack,resumeUrl,applicationDate,status} = req.body;
+        await Candidate.create({name,email,phone,educationalQualification,experience,techStack,resumeUrl,applicationDate,status});
         res.status(200).json({ message: `Candidate Added Successfully` })
     } catch (error) {
         res.status(500).json({ message: error.message });

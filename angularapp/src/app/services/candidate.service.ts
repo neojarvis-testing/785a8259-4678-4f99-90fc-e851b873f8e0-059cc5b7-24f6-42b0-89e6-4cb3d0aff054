@@ -36,7 +36,7 @@ export class CandidateService {
   }
 
   /** Update an existing candidate */
-  updateCandidate(candidateId: string, candidate: Candidate): Observable<any> {
+  updateCandidate(candidateId: string, candidate: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/candidate/updateCandidate/${candidateId}`, candidate, { headers: this.getHeaders() });
   }
 

@@ -48,7 +48,6 @@ import { ErrorComponent } from './components/error/error.component';
     ToastrModule.forRoot({
       positionClass: 'toast-top-right'
     }),
-    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
