@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class RequirementService {
-  private baseUrl = environment.backendUri2;
+  private baseUrl = environment.backendUri5;
 
   constructor(private http: HttpClient) {}
 

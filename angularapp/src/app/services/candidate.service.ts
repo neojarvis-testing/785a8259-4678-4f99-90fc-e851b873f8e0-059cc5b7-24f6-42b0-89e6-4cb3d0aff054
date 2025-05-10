@@ -9,7 +9,7 @@ import { Candidate } from '../models/candidate.model';
   providedIn: 'root'
 })
 export class CandidateService {
-  private baseUrl: string = environment.backendUri3;
+  private baseUrl: string = environment.backendUri5;
 
   constructor(private http: HttpClient) {}
 
