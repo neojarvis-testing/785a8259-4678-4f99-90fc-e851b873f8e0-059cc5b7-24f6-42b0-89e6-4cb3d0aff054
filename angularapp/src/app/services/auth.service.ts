@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Router } from '@angular/router';
 import { Login } from '../models/login.model';
 import { environment } from 'src/environments/environment';
 
@@ -17,11 +16,11 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   register(user: User): Observable<any> {
-    return this.http.post<any>(`${environment.backendUri3}/user/signup`, user);
+    return this.http.post<any>(`${environment.backendUri2}/user/signup`, user);
   }
 
   login(loginData: Login): Observable<any> {
-    return this.http.post<any>(`${environment.backendUri3}/user/login`, loginData);
+    return this.http.post<any>(`${environment.backendUri2}/user/login`, loginData);
   }
 
   // logout(): void {

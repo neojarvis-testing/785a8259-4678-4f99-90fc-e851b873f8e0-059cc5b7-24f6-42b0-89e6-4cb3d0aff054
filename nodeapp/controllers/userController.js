@@ -29,12 +29,12 @@ exports.getUserByEmailAndPassword = async (req, res) => {
 exports.addUser = async (req, res) => {
     try {
         const { userName, email, mobile, password, role } = req.body; 
-        const hashedPassword = await bcrypt.hash(password, 10);
+        // const hashedPassword = await bcrypt.hash(password, 10);
         await User.create({ 
             userName, 
             email, 
             mobile, 
-            password: hashedPassword, 
+            password, 
             role 
         });
         res.status(200).json({ message: "Success" });

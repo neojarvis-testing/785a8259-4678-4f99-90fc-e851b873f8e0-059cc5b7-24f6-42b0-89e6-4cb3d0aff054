@@ -18,6 +18,10 @@
         <li class="nav-item">
           <a class="nav-link text-white fw-medium" routerLink="/manager/view-candidate">Candidates</a>
         </li>
+        <li class="nav-item">
+          <!-- Open Logout Modal -->
+          <button class="btn btn-danger fw-bold px-3" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</button>
+        </li>
         <!-- Profile Dropdown -->
         <!-- <div class="nav-item dropdown">
           <a class="nav-link d-flex align-items-center text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -32,7 +36,6 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" routerLink="/admin/orders">My Requests</a></li>
             <li><a class="dropdown-item" routerLink="/admin/orders">Feedback</a></li>
-            <li><button class="dropdown-item text-danger" (click)="logout()">Logout</button></li>
           </ul>
         </div> -->
       </ul>
@@ -40,7 +43,7 @@
   </nav>
   
   <!-- Logout Confirmation Modal -->
-  <!-- <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -56,4 +59,4 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>

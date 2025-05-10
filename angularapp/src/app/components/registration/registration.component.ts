@@ -54,6 +54,13 @@ export class RegistrationComponent implements AfterViewInit {
       next: () => {
         this.submitted = false;
         localStorage.setItem('userEmail', this.signupForm.value.email);
+        const modalElement = document.getElementById('successModal');
+      if (modalElement) {
+        const modalInstance = new bootstrap.Modal(modalElement);
+        modalInstance.show();
+      }
+
+        // this.navigateToLogin();
         this.navigateToLogin();
       },
       error: (error) => {
