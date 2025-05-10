@@ -8,9 +8,16 @@ import { Router } from '@angular/router';
 })
 export class RecruiterNavbarComponent implements OnInit {
 
+  userId: string;
+
   constructor(private router : Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    const user = localStorage.getItem('userName');
+    this.userId = user;
+    console.log('user object',user);
+    
+    console.log('userName', this.userId);
   }
 
   confirmLogout(): void {

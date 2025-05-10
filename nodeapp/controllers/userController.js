@@ -6,7 +6,7 @@ exports.getUserByEmailAndPassword = async (req, res) => {
     try {
         const { email, password } = req.body;
         const user = await User.findOne({ email });
-        console.log(user);
+        console.log('user Controller',user);
         if(!user) {
             return res.status(404).json({ message: 'User not found' });
         }
@@ -21,7 +21,7 @@ exports.getUserByEmailAndPassword = async (req, res) => {
             role: user.role,
             token
         });
-    } catch (error) {
+    } catch(error) {
         res.status(500).json({ message: error.message });
     }
 }
