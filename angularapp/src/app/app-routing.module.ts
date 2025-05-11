@@ -18,15 +18,15 @@ import { AuthmGuard } from './components/authguard/authm.guard';
 
 const routes: Routes = [
   // Landing Page Routing
-  { path: '', component: AppComponent },
+  {path: '', component: AppComponent },
 
   //common routing paths
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: RegistrationComponent },
+  {path: 'login', component: LoginComponent },
+  {path: 'signup', component: RegistrationComponent },
+  {path: 'home', component: HomeComponent},
   
   //manager module routing paths
   // {path : 'manager/home', component: HomeComponent},
-  { path: 'home', component: HomeComponent, canActivate: [AuthmGuard]},
   {path : 'manager', component: ManagerNavbarComponent, canActivate: [AuthmGuard]},
   {path : 'manager/view-requirement', component: ManagerViewRequirementComponent, canActivate: [AuthmGuard]},
   {path : 'manager/add-requirement', component: ManagerAddRequirementComponent, canActivate: [AuthmGuard]},
@@ -35,7 +35,6 @@ const routes: Routes = [
 
   //recruiter module routing paths
   // {path : 'recruiter/home', component: HomeComponent},
-  { path: 'home', component: HomeComponent, canActivate: [AuthguardGuard]},
   {path : 'recruiter', component: RecruiterNavbarComponent, canActivate: [AuthguardGuard]},
   {path : 'recruiter/getAllCandidates', component: RecruiterViewCandidateComponent, canActivate: [AuthguardGuard]},
   {path : 'recruiter/addCandidate', component: RecruiterAddCandidateComponent, canActivate: [AuthguardGuard]},
