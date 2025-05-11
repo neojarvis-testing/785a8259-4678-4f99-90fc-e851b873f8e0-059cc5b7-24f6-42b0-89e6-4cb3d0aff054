@@ -10,9 +10,12 @@ exports.validateToken = (req, res, next) => {
             return res.status(400).json({ message: "Authentication failed" })
         }
         const token = authHeader.substring(7)
+        if(!token){
+            res.status(400).json({ message: "No Token" })
+        }
         jwt.verify(token, process.env.SECRET_KEY);
         next()
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        res.status(400).json({ error: error.message })
     }
 }

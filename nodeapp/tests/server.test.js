@@ -578,7 +578,7 @@ describe('Candidate_Model_Test', () => {
       educationalQualification: 'Bachelor of Engineering',
       experience: '5 years',
       techStack: 'JavaScript, Node.js',
-      resumeUrl: 'https://8080-fcaafcfabeadacbeabccbfbecbdaff.premiumproject.examly.io/resume.pdf',
+      resumeUrl: 'https://8080-ceedccaabccbeadacbeabccbfbecbdaff.project.examly.io/resume.pdf',
       applicationDate: new Date(),
       status: 'Pending'
     };
@@ -595,7 +595,7 @@ describe('Candidate_Model_Test', () => {
       educationalQualification: 'Bachelor of Engineering',
       experience: '5 years',
       techStack: 'JavaScript, Node.js',
-      resumeUrl: 'https://8080-fcaafcfabeadacbeabccbfbecbdaff.premiumproject.examly.io/resume.pdf',
+      resumeUrl: 'https://8080-ceedccaabccbeadacbeabccbfbecbdaff.project.examly.io/resume.pdf',
       applicationDate: new Date(),
       status: 'Pending'
     };
@@ -614,7 +614,7 @@ describe('Candidate_Model_Test', () => {
       phone: '9876543212',
       experience: '5 years',
       techStack: 'JavaScript, Node.js',
-      resumeUrl: 'https://8080-fcaafcfabeadacbeabccbfbecbdaff.premiumproject.examly.io/resume.pdf',
+      resumeUrl: 'https://8080-ceedccaabccbeadacbeabccbfbecbdaff.project.examly.io/resume.pdf',
       applicationDate: new Date(),
       status: 'Pending'
     };
@@ -631,7 +631,7 @@ describe('Candidate_Model_Test', () => {
       phone: '9876543212',
       educationalQualification: 'Bachelor of Engineering',
       techStack: 'JavaScript, Node.js',
-      resumeUrl: 'https://8080-fcaafcfabeadacbeabccbfbecbdaff.premiumproject.examly.io/resume.pdf',
+      resumeUrl: 'https://8080-ceedccaabccbeadacbeabccbfbecbdaff.project.examly.io/resume.pdf',
       applicationDate: new Date(),
       status: 'Pending'
     };
@@ -650,7 +650,7 @@ describe('Candidate_Model_Test', () => {
       educationalQualification: 'Bachelor of Engineering',
       experience: '5 years',
       techStack: 'JavaScript, Node.js',
-      resumeUrl: 'https://8080-fcaafcfabeadacbeabccbfbecbdaff.premiumproject.examly.io/resume.pdf',
+      resumeUrl: 'https://8080-ceedccaabccbeadacbeabccbfbecbdaff.project.examly.io/resume.pdf',
       status: 'Pending'
     };
 
@@ -667,7 +667,7 @@ describe('Candidate_Model_Test', () => {
       educationalQualification: 'Bachelor of Engineering',
       experience: '5 years',
       techStack: 'JavaScript, Node.js',
-      resumeUrl: 'https://8080-fcaafcfabeadacbeabccbfbecbdaff.premiumproject.examly.io/resume.pdf',
+      resumeUrl: 'https://8080-ceedccaabccbeadacbeabccbfbecbdaff.project.examly.io/resume.pdf',
       applicationDate: new Date()
     };
 
