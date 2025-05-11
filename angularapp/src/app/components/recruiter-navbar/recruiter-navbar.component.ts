@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,18 +8,45 @@ import { Router } from '@angular/router';
   styleUrls: ['./recruiter-navbar.component.css']
 })
 export class RecruiterNavbarComponent implements OnInit {
+  userName: string = '';
+  userEmail: string = '';
+  userMobile: string = '';
+  isLoading: boolean = true;
 
-  constructor(private router : Router) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.userName = localStorage.getItem('userName') || 'Recruiter';
+    const userId = localStorage.getItem('userId');
+    
+    if (userId) {
+      this.authService.getUserProfile(userId).subscribe({
+        next: (profile) => {
+          this.userEmail = profile.email || 'Not available';
+          this.userMobile = profile.mobile || 'Not available';
+          this.isLoading = false;
+        },
+        error: () => {
+          this.userEmail = localStorage.getItem('userEmail') || 'Error loading';
+          this.userMobile = localStorage.getItem('userMobile') || 'Error loading';
+          this.isLoading = false;
+        }
+      });
+    }
   }
 
-  confirmLogout(): void {
-    // Clear user session
-    localStorage.removeItem('userToken');
-    sessionStorage.clear();
+  navigateToEdit() {
+    const userId = localStorage.getItem('userId');
+    this.router.navigate([`/recruiter/edit/${userId}`]);
+  }
 
-    // Navigate to login page
+  logout() {
+    this.authService.logout();
+    localStorage.clear();
+    sessionStorage.clear();
     this.router.navigate(['/login']);
   }
 }

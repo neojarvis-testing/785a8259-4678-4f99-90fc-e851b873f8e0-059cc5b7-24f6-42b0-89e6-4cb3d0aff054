@@ -24,5 +24,5 @@ router.post('/reset-password', async (req, res, next) => {
         next(err);
     }
 });
-
+router.get('/:id', userController.getUserById);
 module.exports = router;

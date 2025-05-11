@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -13,6 +13,7 @@ export class AuthService {
   private userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
   // , private router: Router
+  private apiUrl=environment.backendUri3;
   constructor(private http: HttpClient) { }
 
   register(user: User): Observable<any> {
@@ -21,6 +22,14 @@ export class AuthService {
 
   login(loginData: Login): Observable<any> {
     return this.http.post<any>(`${environment.backendUri3}/user/login`, loginData);
+  }
+
+  getUserProfile(userId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/user/${userId}`, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    });
   }
 
   // logout(): void {
@@ -32,5 +41,9 @@ export class AuthService {
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
   }
-
+  logout(): void {
+    localStorage.clear();
+    sessionStorage.clear();
+    this.userSubject.next(null);
+  }
 }

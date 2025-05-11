@@ -9,8 +9,7 @@ import { PasswordResetService } from 'src/app/services/password-reset.service';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
-
-  resetForm!: FormGroup;
+  resetForm: FormGroup;
   token: string = '';
   message: string = '';
   error: string = '';
@@ -21,15 +20,16 @@ export class ResetPasswordComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private passwordResetService: PasswordResetService
-  ) {}
-
-  ngOnInit(): void {
-    this.token = this.route.snapshot.paramMap.get('token') || '';
+  ) {
     this.resetForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
     }, { validator: this.matchPasswords });
+  }
+
+  ngOnInit(): void {
+    this.token = this.route.snapshot.paramMap.get('token') || '';
   }
 
   get f() {
@@ -53,11 +53,11 @@ export class ResetPasswordComponent implements OnInit {
 
     this.passwordResetService.resetPassword(this.token, password).subscribe({
       next: (res) => {
-        this.message = res.message;
-        setTimeout(() => this.router.navigate(['/login']), 2000); // Redirect after success
+        this.message = res.message || 'Password reset successfully!';
+        setTimeout(() => this.router.navigate(['/login']), 2000);
       },
       error: (err) => {
-        this.error = err.error?.message || 'Reset failed. Please try again.';
+        this.error = err.error?.message || 'Password reset failed. Please try again.';
         this.isSubmitted = false;
       }
     });
