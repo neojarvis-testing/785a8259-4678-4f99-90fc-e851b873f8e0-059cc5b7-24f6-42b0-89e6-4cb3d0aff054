@@ -40,7 +40,7 @@ export class RecruiterNavbarComponent implements OnInit {
 
   navigateToEdit() {
     const userId = localStorage.getItem('userId');
-    this.router.navigate([`/recruiter/edit/${userId}`]);
+    this.router.navigate([`edit/${userId}`]);
   }
 
   logout() {

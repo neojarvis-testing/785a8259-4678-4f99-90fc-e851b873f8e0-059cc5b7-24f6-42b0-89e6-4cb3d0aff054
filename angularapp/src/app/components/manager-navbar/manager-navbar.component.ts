@@ -40,7 +40,7 @@ export class ManagerNavbarComponent implements OnInit {
 
   navigateToEdit() {
     const userId = localStorage.getItem('userId');
-    this.router.navigate([`/manager/edit/${userId}`]);
+    this.router.navigate([`edit/${userId}`]);
   }
 
   logout() {

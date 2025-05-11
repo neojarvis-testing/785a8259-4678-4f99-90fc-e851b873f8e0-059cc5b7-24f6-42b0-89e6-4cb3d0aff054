@@ -25,4 +25,5 @@ router.post('/reset-password', async (req, res, next) => {
     }
 });
 router.get('/:id', userController.getUserById);
+router.patch('/:id', userController.updateUser);
 module.exports = router;

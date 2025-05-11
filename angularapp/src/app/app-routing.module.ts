@@ -14,6 +14,7 @@ import { RecruiterAddCandidateComponent } from './components/recruiter-add-candi
 import { RecruiterViewRequirementComponent } from './components/recruiter-view-requirement/recruiter-view-requirement.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 const routes: Routes = [
   //common routing paths
@@ -38,7 +39,8 @@ const routes: Routes = [
   {path : 'recruiter/addCandidate/:id', component: RecruiterAddCandidateComponent},
   {path: 'recruiter/getAllRequirements', component: RecruiterViewRequirementComponent},
   {path: 'forgotPassword', component: ForgotPasswordComponent},
-  {path:'resetPassword/:token',component:ResetPasswordComponent}
+  {path:'resetPassword/:token',component:ResetPasswordComponent},
+  {path:'edit/:id',component: EditProfileComponent}
 ];
 
 @NgModule({

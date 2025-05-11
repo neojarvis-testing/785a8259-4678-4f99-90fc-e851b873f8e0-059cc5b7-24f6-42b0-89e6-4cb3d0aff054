@@ -20,6 +20,7 @@ import { RecruiterViewRequirementComponent } from './components/recruiter-view-r
 import { ErrorComponent } from './components/error/error.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     RecruiterViewRequirementComponent,
     RegistrationComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

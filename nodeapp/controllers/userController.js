@@ -98,4 +98,18 @@ exports.resetPassword = async (resetToken, newPassword) => {
     
 };
 
+exports.updateUser = async (req, res) => {
+    try {
+      const { name, email, mobile } = req.body;
+      const user = await User.findByIdAndUpdate(
+        req.params.id,
+        { userName: name, email, mobile },
+        { new: true }
+      );
+      res.status(200).json(user);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+
 

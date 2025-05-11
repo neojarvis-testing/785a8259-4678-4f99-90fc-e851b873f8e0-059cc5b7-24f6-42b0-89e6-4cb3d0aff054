@@ -32,11 +32,13 @@ export class AuthService {
     });
   }
 
-  // logout(): void {
-  //   localStorage.clear();
-  //   this.userSubject.next(null);
-  //   this.router.navigate(['/login']);
-  // }
+  updateProfile(userId: string, data: any): Observable<any> {
+    return this.http.patch(`${this.apiUrl}/user/${userId}`, data, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      })
+    });
+  }
 
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token');
