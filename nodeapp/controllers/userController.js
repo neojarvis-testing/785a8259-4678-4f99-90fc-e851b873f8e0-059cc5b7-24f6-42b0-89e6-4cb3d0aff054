@@ -50,7 +50,7 @@ exports.forgotPassword=async (email)=>{
     const user=await User.findOne({email});
     if(!user) throw createError(404, `No user found with EMAIL ID: ${email}`);
     const payload={
-        id:user._id,
+        id:user._id.toString(),
         name:user.name,
         email:user.email,
         role:user.role
@@ -77,28 +77,14 @@ exports.forgotPassword=async (email)=>{
     return {message: 'Password reset link sent'}
 };
 exports.resetPassword = async (resetToken, newPassword) => {
-    console.log('Reset Token Log: ', resetToken);
-    console.log("JWT Secret Key:", process.env.SECRET_KEY);
-    console.log(jwt.decode(resetToken));
-    try {
-        const decoded = jwt.verify(resetToken, process.env.SECRET_KEY);
-        console.log('Decoded Token:', decoded);
-        
-
-        const user = await User.findById(decoded.id); // Corrected: Use decoded.id
-        console.log('User:', user);
-
-        if (!user) throw createError(400, 'Invalid token');
-        if (Date.now() > user.resetTokenExpiry) throw createError(400, 'Token expired');
-
-        user.password = newPassword;
-        user.resetToken = undefined;
-        await user.save();
-
-        return { message: 'Password reset successful!' };
-
-    } catch (error) {
-        console.error('JWT Error:', error.message);
-        throw createError(400, 'Invalid or expired token');
-    }
+    const decoded= jwt.verify(resetToken, process.env.SECRET_KEY);
+    const user=await User.findById(decoded.id)
+    if (!user) throw createError(400, 'Invalid token');
+    if (Date.now() > user.resetTokenExpiry) throw createError(400, 'Token expired');
+    user.password = newPassword;
+    user.resetToken = undefined;
+    await user.save();  return { message: 'Password reset successful!' };
+    
 };
+
+

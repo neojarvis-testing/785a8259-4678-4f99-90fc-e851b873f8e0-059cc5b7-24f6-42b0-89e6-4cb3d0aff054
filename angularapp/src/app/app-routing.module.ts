@@ -38,7 +38,7 @@ const routes: Routes = [
   {path : 'recruiter/addCandidate/:id', component: RecruiterAddCandidateComponent},
   {path: 'recruiter/getAllRequirements', component: RecruiterViewRequirementComponent},
   {path: 'forgotPassword', component: ForgotPasswordComponent},
-  {path:'resetPassword',component:ResetPasswordComponent}
+  {path:'resetPassword/:token',component:ResetPasswordComponent}
 ];
 
 @NgModule({
