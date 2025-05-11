@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Candidate } from 'src/app/models/candidate.model';
 import { CandidateService } from 'src/app/services/candidate.service';
 declare var $: any;
-@Component({
+@Component({ 
   selector: 'app-recruiter-view-candidate',
   templateUrl: './recruiter-view-candidate.component.html',
   styleUrls: ['./recruiter-view-candidate.component.css']
