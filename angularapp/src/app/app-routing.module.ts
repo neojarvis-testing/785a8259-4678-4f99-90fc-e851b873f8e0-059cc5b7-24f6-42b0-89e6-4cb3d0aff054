@@ -13,6 +13,8 @@ import { RecruiterAddCandidateComponent } from './components/recruiter-add-candi
 import { RecruiterViewRequirementComponent } from './components/recruiter-view-requirement/recruiter-view-requirement.component';
 import { ErrorComponent } from './components/error/error.component';
 import { AppComponent } from './app.component';
+import { AuthguardGuard } from './components/authguard/authguard.guard';
+import { AuthmGuard } from './components/authguard/authm.guard';
 
 const routes: Routes = [
   // Landing Page Routing
@@ -21,23 +23,24 @@ const routes: Routes = [
   //common routing paths
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: RegistrationComponent },
-  { path: 'home', component: HomeComponent },
-
+  
   //manager module routing paths
   // {path : 'manager/home', component: HomeComponent},
-  {path : 'manager', component: ManagerNavbarComponent},
-  {path : 'manager/view-requirement', component: ManagerViewRequirementComponent},
-  {path : 'manager/add-requirement', component: ManagerAddRequirementComponent},
-  {path : 'manager/add-requirement/:id', component: ManagerAddRequirementComponent},
-  {path : 'manager/view-candidate', component: ManagerViewCandidateComponent},
+  { path: 'home', component: HomeComponent, canActivate: [AuthmGuard]},
+  {path : 'manager', component: ManagerNavbarComponent, canActivate: [AuthmGuard]},
+  {path : 'manager/view-requirement', component: ManagerViewRequirementComponent, canActivate: [AuthmGuard]},
+  {path : 'manager/add-requirement', component: ManagerAddRequirementComponent, canActivate: [AuthmGuard]},
+  {path : 'manager/add-requirement/:id', component: ManagerAddRequirementComponent, canActivate: [AuthmGuard]},
+  {path : 'manager/view-candidate', component: ManagerViewCandidateComponent, canActivate: [AuthmGuard]},
 
   //recruiter module routing paths
   // {path : 'recruiter/home', component: HomeComponent},
-  {path : 'recruiter', component: RecruiterNavbarComponent},
-  {path : 'recruiter/getAllCandidates', component: RecruiterViewCandidateComponent},
-  {path : 'recruiter/addCandidate', component: RecruiterAddCandidateComponent},
-  {path : 'recruiter/addCandidate/:id', component: RecruiterAddCandidateComponent},
-  {path: 'recruiter/getAllRequirements', component: RecruiterViewRequirementComponent},
+  { path: 'home', component: HomeComponent, canActivate: [AuthguardGuard]},
+  {path : 'recruiter', component: RecruiterNavbarComponent, canActivate: [AuthguardGuard]},
+  {path : 'recruiter/getAllCandidates', component: RecruiterViewCandidateComponent, canActivate: [AuthguardGuard]},
+  {path : 'recruiter/addCandidate', component: RecruiterAddCandidateComponent, canActivate: [AuthguardGuard]},
+  {path : 'recruiter/addCandidate/:id', component: RecruiterAddCandidateComponent, canActivate: [AuthguardGuard]},
+  {path: 'recruiter/getAllRequirements', component: RecruiterViewRequirementComponent, canActivate: [AuthguardGuard]},
 
   //error component routing
   {path : '**' , component : ErrorComponent}
