@@ -27,9 +27,7 @@ export class ManagerNavbarComponent implements OnInit {
 
   confirmLogout(): void {
     // Clear user session
-    localStorage.removeItem('userToken');
-    sessionStorage.clear();
-
+    localStorage.clear();
     // Navigate to login page
     this.router.navigate(['/login']);
   }
