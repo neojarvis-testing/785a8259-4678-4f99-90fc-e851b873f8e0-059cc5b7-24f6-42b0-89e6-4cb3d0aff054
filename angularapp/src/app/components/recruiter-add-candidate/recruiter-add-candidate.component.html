@@ -65,6 +65,9 @@
       <button class="btn bg-secondary" *ngIf="isEditMode === true" (click)="goBack()">
         Go Back
       </button>
+      <button class="btn bg-secondary" *ngIf="isEditMode === false" (click)="goHome()">
+        Cancel
+      </button>
     </div>
   </form>
 </div>

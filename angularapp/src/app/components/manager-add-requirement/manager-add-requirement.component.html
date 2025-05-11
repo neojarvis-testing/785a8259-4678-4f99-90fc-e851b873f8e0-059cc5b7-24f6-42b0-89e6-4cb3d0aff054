@@ -41,11 +41,31 @@
             </div>
         </div>
 
-        <button type="submit" class="btn btn-success mt-3 mb-3 d-block mx-auto" [disabled]="requirementForm.invalid"
-            data-bs-toggle="modal" data-bs-target="#successModal">
-            {{ isEditMode ? 'Update' : 'Submit' }}
-        </button>
-
+        
+        <div class="d-flex justify-content-center gap-3 mt-4 mb-4">
+            <button type="submit"
+              class="btn btn-success px-4"
+              [disabled]="requirementForm.invalid"
+              data-bs-toggle="modal"
+              data-bs-target="#successModal">
+              {{ isEditMode ? 'Update' : 'Submit' }}
+            </button>
+          
+            <button class="btn btn-secondary px-4"
+              *ngIf="isEditMode"
+              type="button"
+              (click)="goBack()">
+              Go Back
+            </button>
+          
+            <button class="btn btn-secondary px-4"
+              *ngIf="!isEditMode"
+              type="button"
+              (click)="goHome()">
+              Cancel
+            </button>
+          </div>
+          
     </form>
 </div>
 

@@ -100,4 +100,7 @@ export class RecruiterAddCandidateComponent implements OnInit {
   goBack(){
     this.router.navigate(['/recruiter/getAllCandidates'])
   }
+  goHome(){
+    this.router.navigate(['/home'])
+  }
 }

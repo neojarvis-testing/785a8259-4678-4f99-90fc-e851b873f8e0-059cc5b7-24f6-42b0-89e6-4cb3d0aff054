@@ -15,7 +15,7 @@ export class RecruiterViewRequirementComponent implements OnInit {
   currentPage: number = 1;
   pageSize: number = 3;
   totalPages: number = 1;
-  pages: number[] = [];
+  pages: number[] = []; 
 
   constructor(private requirementService: RequirementService) {}
 
