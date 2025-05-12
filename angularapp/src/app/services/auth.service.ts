@@ -13,7 +13,7 @@ export class AuthService {
   private userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
   // , private router: Router
-  private apiUrl=environment.backendUri3;
+  private apiUrl=environment.backendUri4;
   constructor(private http: HttpClient) { }
 
   register(user: User): Observable<any> {
