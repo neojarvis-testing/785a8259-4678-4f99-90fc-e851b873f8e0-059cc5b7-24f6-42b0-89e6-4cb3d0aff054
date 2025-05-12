@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config();
 const { resetToken } = require('../authUtils')
 const createError = require('http-errors')
-
+``
 exports.getUserByEmailAndPassword = async (req, res) => {
     try {
         let { email, password } = req.body;
