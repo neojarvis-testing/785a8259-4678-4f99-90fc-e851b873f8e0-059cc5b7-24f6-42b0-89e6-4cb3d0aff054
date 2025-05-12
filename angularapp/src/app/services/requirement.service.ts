@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class RequirementService {
-  private baseUrl = environment.backendUri1;
+  private baseUrl = environment.backendUri4;
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +18,7 @@ export class RequirementService {
 
   /** Get all requirements */
   getAllRequirements(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/requirement/getAllRequirements`);
+    return this.http.get<any[]>(`${this.baseUrl}/requirement/getAllRequirements`, { headers: this.getHeaders() });
   }
 
   /** Get requirement by ID */
