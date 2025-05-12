@@ -10,18 +10,18 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-  private userSubject = new BehaviorSubject<User | null>(null);
+  private readonly userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
   // , private router: Router
-  private apiUrl=environment.backendUri4;
-  constructor(private http: HttpClient) { }
+  private readonly apiUrl = environment.backendUri4;
+  constructor(private readonly http: HttpClient) { }
 
   register(user: User): Observable<any> {
-    return this.http.post<any>(`${environment.backendUri4}/user/signup`, user);
+    return this.http.post<any>(`${environment.backendUri1}/user/signup`, user);
   }
 
   login(loginData: Login): Observable<any> {
-    return this.http.post<any>(`${environment.backendUri4}/user/login`, loginData);
+    return this.http.post<any>(`${environment.backendUri1}/user/login`, loginData);
   }
 
   getUserProfile(userId: string): Observable<any> {

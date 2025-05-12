@@ -7,9 +7,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class RequirementService {
-  private baseUrl = environment.backendUri4;
+  private readonly baseUrl = environment.backendUri4;
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');

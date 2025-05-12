@@ -9,9 +9,9 @@ import { Candidate } from '../models/candidate.model';
   providedIn: 'root'
 })
 export class CandidateService {
-  private baseUrl: string = environment.backendUri4;
+  private readonly baseUrl: string = environment.backendUri4;
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   private getHeaders(): HttpHeaders {
     return new HttpHeaders({

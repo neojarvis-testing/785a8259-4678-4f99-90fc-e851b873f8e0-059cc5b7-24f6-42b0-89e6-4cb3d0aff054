@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CandidateService } from 'src/app/services/candidate.service';
 
-declare var $: any;
+declare let $: any;
 
 @Component({
   selector: 'app-recruiter-add-candidate',
@@ -19,10 +19,10 @@ export class RecruiterAddCandidateComponent implements OnInit {
   successMessage: string ='';
 
   constructor(
-    private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private candidateService: CandidateService,
-    private router: Router
+    private readonly fb: FormBuilder,
+    private readonly route: ActivatedRoute,
+    private readonly candidateService: CandidateService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
