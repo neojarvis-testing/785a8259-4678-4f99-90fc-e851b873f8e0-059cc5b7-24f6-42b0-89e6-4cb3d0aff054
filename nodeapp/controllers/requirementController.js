@@ -27,13 +27,13 @@ exports.addRequirement = async (req, res) => {
     try {
         const { title, description, department } = req.body;
 
-        if (!title || !validator.isAlphanumeric(title.replace(/\s/g, ''))) {
+        if (!validator.isAlphanumeric(title.replace(/\s/g, ''))) {
             return res.status(400).json({ message: "Invalid title format" });
         }
-        if (!description || !validator.isLength(description, { min: 2 })) {
+        if (!validator.isLength(description, { min: 2 })) {
             return res.status(400).json({ message: "Description must be at least 2 characters long" });
         }
-        if (!department || !validator.isAlpha(department.replace(/\s/g, ''))) {
+        if (!validator.isAlpha(department.replace(/\s/g, ''))) {
             return res.status(400).json({ message: "Invalid department format" });
         }
 

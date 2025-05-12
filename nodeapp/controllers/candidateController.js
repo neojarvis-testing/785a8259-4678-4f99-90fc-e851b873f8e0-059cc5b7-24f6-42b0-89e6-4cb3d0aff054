@@ -27,19 +27,19 @@ exports.addCandidate = async (req, res) => {
     try {
         const { name, email, phone, educationalQualification, experience, techStack, resumeUrl, applicationDate, status } = req.body;
 
-        if (!name || !validator.isAlpha(name.replace(/\s/g, ''))) {
+        if (!validator.isAlpha(name.replace(/\s/g, ''))) {
             return res.status(400).json({ message: "Invalid name format" });
         }
-        if (!email || !validator.isEmail(email)) {
+        if (!validator.isEmail(email)) {
             return res.status(400).json({ message: "Invalid email format" });
         }
-        if (!phone || !validator.isMobilePhone(phone, 'any')) {
+        if (!validator.isMobilePhone(phone, 'any')) {
             return res.status(400).json({ message: "Invalid phone number format" });
         }
-        if (!resumeUrl || !validator.isURL(resumeUrl)) {
+        if (!validator.isURL(resumeUrl)) {
             return res.status(400).json({ message: "Invalid resume URL format" });
         }
-        if (applicationDate && !validator.isDate(applicationDate)) {
+        if (!validator.isDate(applicationDate)) {
             return res.status(400).json({ message: "Invalid application date format" });
         }
 
