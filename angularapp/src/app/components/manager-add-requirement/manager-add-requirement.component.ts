@@ -91,4 +91,10 @@ export class ManagerAddRequirementComponent implements OnInit {
     }
     this.router.navigate(['/manager/view-requirement']);
   }
+  goBack(){
+    this.router.navigate(['/recruiter/getAllCandidates'])
+  }
+  goHome(){
+    this.router.navigate(['/home'])
+  }
 }

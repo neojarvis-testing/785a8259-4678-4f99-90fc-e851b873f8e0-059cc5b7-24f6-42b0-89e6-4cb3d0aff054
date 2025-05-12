@@ -66,9 +66,17 @@
     </div>
 
     <!-- Submit Button -->
-    <button type="submit" class="btn btn-success w-100" [disabled]="candidateForm.invalid">
-      {{ isEditMode ? 'Update' : 'Submit' }}
-    </button>
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-success w-100" [disabled]="candidateForm.invalid">
+        {{ isEditMode ? 'Update' : 'Submit' }}
+      </button>
+      <button class="btn bg-secondary" *ngIf="isEditMode === true" (click)="goBack()">
+        Go Back
+      </button>
+      <button class="btn bg-secondary" *ngIf="isEditMode === false" (click)="goHome()">
+        Cancel
+      </button>
+    </div>
   </form>
 </div>
 

@@ -20,6 +20,9 @@ import { RecruiterNavbarComponent } from './components/recruiter-navbar/recruite
 import { RecruiterViewCandidateComponent } from './components/recruiter-view-candidate/recruiter-view-candidate.component';
 import { RecruiterViewRequirementComponent } from './components/recruiter-view-requirement/recruiter-view-requirement.component';
 import { ErrorComponent } from './components/error/error.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 
@@ -38,7 +41,10 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     RecruiterNavbarComponent,
     RecruiterViewCandidateComponent,
     RecruiterViewRequirementComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
