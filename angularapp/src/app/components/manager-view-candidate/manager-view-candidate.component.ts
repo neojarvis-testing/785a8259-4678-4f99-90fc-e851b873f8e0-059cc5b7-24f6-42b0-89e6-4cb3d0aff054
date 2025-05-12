@@ -20,7 +20,7 @@ export class ManagerViewCandidateComponent implements OnInit {
   isDeleteModal: boolean = false;
   selectedCandidateId: string | null = null;
 
-  constructor(private candidateService: CandidateService, private router: Router) { }
+  constructor(private readonly candidateService: CandidateService, private readonly router: Router) { }
 
   ngOnInit(): void {
     this.fetchCandidates();

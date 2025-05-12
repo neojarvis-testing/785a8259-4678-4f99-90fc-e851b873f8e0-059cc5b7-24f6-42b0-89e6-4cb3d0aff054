@@ -15,20 +15,20 @@ export class EditProfileComponent implements OnInit {
   userId: string;
   userRole: string ='';
   constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private route: ActivatedRoute,
-    private router: Router
+    private readonly fb: FormBuilder,
+    private readonly authService: AuthService,
+    private readonly route: ActivatedRoute,
+    private readonly router: Router
   ) {
     this.editForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      mobile: ['', [Validators.required, Validators.pattern(/^[0-9]{10,15}$/)]]
+      mobile: ['', [Validators.required, Validators.pattern(/^\d{10,15}$/)]]
     });
   }
 
   ngOnInit(): void {
-    this.userId = this.route.snapshot.params['id'] || localStorage.getItem('userId');
+    this.userId = this.route.snapshot.params['id'] ?? localStorage.getItem('userId');
     this.loadUserData();
     this.userRole=localStorage.getItem("role")
   }
@@ -38,9 +38,9 @@ export class EditProfileComponent implements OnInit {
     this.authService.getUserProfile(this.userId).subscribe({
       next: (user) => {
         this.editForm.patchValue({
-          name: user.userName || '',
-          email: user.email || '',
-          mobile: user.mobile || ''
+          name: user.userName ?? '',
+          email: user.email ?? '',
+          mobile: user.mobile ?? ''
         });
       },
       error: (err) => {
@@ -71,12 +71,10 @@ export class EditProfileComponent implements OnInit {
         }
         
         this.router.navigate(['/home']);
-        // this.toastr.success('Profile updated successfully');
       },
       error: (err) => {
         console.error('Update failed', err);
         this.loading = false;
-        // this.toastr.error('Failed to update profile');
       }
     });
   }

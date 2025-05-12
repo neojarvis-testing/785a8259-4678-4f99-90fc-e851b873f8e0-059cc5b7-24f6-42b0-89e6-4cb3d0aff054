@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Candidate } from 'src/app/models/candidate.model';
 import { CandidateService } from 'src/app/services/candidate.service';
-declare var $: any;
+declare let $: any;
 @Component({ 
   selector: 'app-recruiter-view-candidate',
   templateUrl: './recruiter-view-candidate.component.html',
@@ -20,7 +20,7 @@ export class RecruiterViewCandidateComponent implements OnInit {
   isDeleteModal:boolean=false;
   selectedCandidateId: string | null = null;
 
-  constructor(private candidateService: CandidateService, private router: Router) {}
+  constructor(private readonly candidateService: CandidateService, private readonly  router: Router) {}
 
   ngOnInit(): void {
     this.fetchCandidates();

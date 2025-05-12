@@ -16,9 +16,9 @@ export class ForgotPasswordComponent implements OnInit {
   error: string = '';
 
   constructor(
-    private fb: FormBuilder,
-    private passwordResetService: PasswordResetService,
-    private router:Router
+    private readonly fb: FormBuilder,
+    private readonly passwordResetService: PasswordResetService,
+    private readonly router:Router
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +48,7 @@ export class ForgotPasswordComponent implements OnInit {
         setTimeout(() => this.router.navigate(['/login']), 2000);
       },
       error: (err) => {
-        this.error = err.error?.message || 'Something went wrong. Please try again.';
+        this.error = err.error?.message ?? 'Something went wrong. Please try again.';
         this.isSubmitted = false;
       }
     });
