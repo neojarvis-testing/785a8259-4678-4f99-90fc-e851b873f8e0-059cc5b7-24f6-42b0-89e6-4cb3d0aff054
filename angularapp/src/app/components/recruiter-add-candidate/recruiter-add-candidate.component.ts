@@ -97,4 +97,10 @@ export class RecruiterAddCandidateComponent implements OnInit {
     $('#successModal').modal('hide');
     this.router.navigate(['/recruiter/getAllCandidates']);
   }
+  goBack(){
+    this.router.navigate(['/recruiter/getAllCandidates'])
+  }
+  goHome(){
+    this.router.navigate(['/home'])
+  }
 }

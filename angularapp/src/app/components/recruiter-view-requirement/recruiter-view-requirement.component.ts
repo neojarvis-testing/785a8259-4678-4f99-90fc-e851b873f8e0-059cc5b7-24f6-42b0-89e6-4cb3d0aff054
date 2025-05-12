@@ -12,6 +12,10 @@ export class RecruiterViewRequirementComponent implements OnInit {
   requirements: Requirement[] = [];
   filteredRequirements: Requirement[] = [];
   searchText: string = '';
+  currentPage: number = 1;
+  pageSize: number = 3;
+  totalPages: number = 1;
+  pages: number[] = []; 
 
   constructor(private requirementService: RequirementService) {}
 
@@ -23,6 +27,8 @@ export class RecruiterViewRequirementComponent implements OnInit {
     this.requirementService.getAllRequirements().subscribe((data) => {
       this.requirements = data;
       this.filteredRequirements = data;
+      this.applySearch();
+      this.calculatePagination(); 
     });
   }
 
@@ -33,6 +39,28 @@ export class RecruiterViewRequirementComponent implements OnInit {
       req.description.toLowerCase().includes(search) ||
       req.department.toLowerCase().includes(search)
     );
+    this.calculatePagination(); 
+  }
+  calculatePagination(): void {
+    this.totalPages = Math.ceil(this.filteredRequirements.length / this.pageSize);
+    this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+    this.currentPage = 1;
+  }
+
+  get paginatedRequirements(): Requirement[] {
+    const start = (this.currentPage - 1) * this.pageSize;
+    return this.filteredRequirements.slice(start, start + this.pageSize);
+  }
+  changePage(page: number): void {
+    this.currentPage = page;
+  }
+
+  previousPage(): void {
+    if (this.currentPage > 1) this.currentPage--;
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) this.currentPage++;
   }
 }
 

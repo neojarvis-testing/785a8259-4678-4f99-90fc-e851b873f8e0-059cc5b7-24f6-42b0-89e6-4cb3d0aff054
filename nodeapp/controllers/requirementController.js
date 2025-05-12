@@ -23,13 +23,14 @@ exports.getRequirementById = async (req, res) => {
 
 exports.addRequirement = async (req, res) => {
     try {
-        const {title, description, department, postedDate, status} = req.body;
-        await Requirement.create({title, description, department, postedDate, status});
-        res.status(200).json({ message: `Requirement Added Successfully` })
+        const { title, description, department } = req.body;
+        const postedDate = new Date();
+        const status = 'Active'; const requirement = await Requirement.create({ title, description, department, postedDate, status });
+        res.status(200).json({ message: `Requirement Added Successfully`, requirement });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-}
+};
 
 exports.updateRequirement = async (req, res) => {
     try {

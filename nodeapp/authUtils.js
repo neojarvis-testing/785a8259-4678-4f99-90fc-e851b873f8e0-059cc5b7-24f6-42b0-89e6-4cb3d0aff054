@@ -5,7 +5,7 @@ exports.generateToken = (userId) => jwt.sign({userId}, process.env.SECRET_KEY, {
 
 exports.validateToken = (req, res, next) => {
     try {
-        const authHeader = req.header('Authorization');
+        const authHeader = req.headers.authorization;
         if (!authHeader || !authHeader.startsWith('Bearer')) {
             return res.status(400).json({ message: "Authentication failed" })
         }
@@ -16,3 +16,4 @@ exports.validateToken = (req, res, next) => {
         res.status(500).json({ error: error.message })
     }
 }
+exports.resetToken=(payload)=>jwt.sign(payload, process.env.SECRET_KEY, {expiresIn: '15m'});
