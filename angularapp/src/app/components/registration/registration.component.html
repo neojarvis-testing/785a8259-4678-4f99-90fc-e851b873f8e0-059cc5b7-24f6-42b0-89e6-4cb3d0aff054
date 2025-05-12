@@ -9,17 +9,19 @@
             <!-- Username -->
             <div class="col-12">
                 <label class="form-label">Username</label>
-                <input type="text" class="form-control" name="userName" autocomplete="off" formControlName="userName" placeholder="UserName">
+                <input type="text" class="form-control" name="userName" autocomplete="off" formControlName="userName"
+                    placeholder="UserName">
                 <div *ngIf="signupForm.get('userName')?.invalid && signupForm.get('userName')?.touched"
                     class="text-danger">
                     Username is required.
                 </div>
             </div>
-  
+
             <!-- Email -->
             <div class="col-12">
                 <label class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" autocomplete="email" formControlName="email" placeholder="Email">
+                <input type="email" class="form-control" name="email" autocomplete="email" formControlName="email"
+                    placeholder="Email">
                 <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="text-danger">
                     Enter a valid email.
                 </div>
@@ -28,12 +30,13 @@
             <!-- Mobile Number -->
             <div class="col-12">
                 <label class="form-label">Mobile Number</label>
-                <input type="tel" class="form-control" name="mobile" autocomplete="mobile" formControlName="mobile" placeholder="Mobile">
+                <input type="tel" class="form-control" name="mobile" autocomplete="mobile" formControlName="mobile"
+                    placeholder="Mobile">
                 <div *ngIf="signupForm.get('mobile')?.invalid && signupForm.get('mobile')?.touched" class="text-danger">
                     Enter a valid 10-digit mobile number.
                 </div>
             </div>
-            
+
             <!-- Role Dropdown -->
             <div class="col-12">
                 <label class="form-label">Role</label>
@@ -50,24 +53,29 @@
             <!-- Password -->
             <div class="col-12">
                 <label class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" autocomplete="new-password" formControlName="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" autocomplete="new-password"
+                    formControlName="password" placeholder="Password">
                 <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
                     class="text-danger">
                     Password is empty.
                 </div>
                 <div *ngIf="signupForm.get('password')?.hasError('pattern') && signupForm.get('password')?.touched"
                     class="text-danger">
-                    Password must be at least 8 characters long and include at least one letter, one number and one special character.
+                    Password must be at least 8 characters long and include at least one letter, one number and one
+                    special character.
                 </div>
-                <span class="text-danger mt-1">
-                    *Note :- Password must contain atleast 1 Uppercase, 1 Lowercase, 1 special character and Numeric value.
+                <span class=" mt-1">
+                    <span class="text-danger">* </span>Note :- <li>Password must contain atleast 1 Uppercase, 1
+                        Lowercase, 1 special character and Numeric value.</li>
+                    <li>Password must have atleast 8 characters.</li>
                 </span>
             </div>
 
             <!-- Confirm Password -->
             <div class="col-12">
                 <label class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" name="confirmPassword" autocomplete="new-password" formControlName="confirmPassword" placeholder="Confirm Password">
+                <input type="password" class="form-control" name="confirmPassword" autocomplete="new-password"
+                    formControlName="confirmPassword" placeholder="Confirm Password">
                 <div *ngIf="signupForm.errors?.mismatch && signupForm.get('confirmPassword')?.touched"
                     class="text-danger">
                     Passwords do not match.
@@ -105,5 +113,5 @@
                     (click)="navigateToLogin()">OK</button>
             </div>
         </div>
-    </div> 
+    </div>
 </div>

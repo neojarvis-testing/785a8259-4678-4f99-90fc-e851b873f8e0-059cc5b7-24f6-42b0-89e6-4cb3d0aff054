@@ -36,7 +36,7 @@
           <td>{{ candidate.applicationDate | date:'MMM dd, yyyy' }}</td>
           <td>{{ candidate.status }}</td>
           <td>
-            <button class="btn btn-success btn-sm me-1" (click)="onEdit(candidate._id)">Edit</button>
+            <button class="btn btn-success btn-sm me-1 mb-2" (click)="onEdit(candidate._id)">Edit</button>
             <button class="btn btn-danger btn-sm" (click)="confirmDelete(candidate._id)">Delete</button>
           </td>
         </tr>
@@ -73,7 +73,7 @@
       <h5 class="text-danger">Delete Candidate</h5>
       <p>Are you sure you want to delete this candidate?</p>
       <div class="d-flex justify-content-end mt-3">
-        <button class="btn btn-danger me-2" (click)="deleteCandidate()">Delete</button>
+        <button class="btn btn-danger me-2" (click)="deleteCandidate()">Yes</button>
         <button class="btn btn-secondary" (click)="cancelDelete()">Cancel</button>
       </div>
     </div>
