@@ -1,0 +1,29 @@
+.card {
+    border-radius: 10px;
+    border: none;
+  }
+  
+  .card-header {
+    border-radius: 10px 10px 0 0 !important;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+    padding: 10px 15px;
+  }
+  
+  .btn {
+    padding: 8px 20px;
+    border-radius: 5px;
+    min-width: 120px;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .invalid-feedback {
+    display: block;
+    margin-top: 5px;
+  }

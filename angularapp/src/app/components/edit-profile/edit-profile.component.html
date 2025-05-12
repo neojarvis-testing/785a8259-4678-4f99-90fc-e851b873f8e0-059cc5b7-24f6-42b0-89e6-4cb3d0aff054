@@ -1,0 +1,60 @@
+<app-manager-navbar *ngIf="userRole==='Manager'"></app-manager-navbar>
+<app-recruiter-navbar *ngIf="userRole==='Recruiter'"></app-recruiter-navbar>
+<div class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card shadow">
+          <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Edit Profile</h4>
+          </div>
+          
+          <div class="card-body">
+            <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+              <!-- Name Field -->
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" formControlName="name"
+                       [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                  <div *ngIf="f.name.errors.required">Name is required</div>
+                </div>
+              </div>
+  
+              <!-- Email Field -->
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" formControlName="email"
+                       [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.email">Invalid email format</div>
+                </div>
+              </div>
+  
+              <!-- Mobile Number Field -->
+              <div class="mb-3">
+                <label for="mobile" class="form-label">Mobile Number</label>
+                <input type="tel" class="form-control" id="mobile" formControlName="mobile"
+                       [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }">
+                <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                  <div *ngIf="f.mobile.errors.required">Mobile number is required</div>
+                  <div *ngIf="f.mobile.errors.pattern">Invalid mobile number</div>
+                </div>
+              </div>
+  
+              <!-- Action Buttons -->
+              <div class="d-flex justify-content-end gap-2 mt-4">
+                <button type="button" class="btn btn-secondary" (click)="onCancel()">
+                  Cancel
+                </button>
+                <button type="submit" class="btn btn-success">
+                  <span *ngIf="!loading">Update Profile</span>
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

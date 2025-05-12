@@ -11,18 +11,26 @@ import { RecruiterNavbarComponent } from './components/recruiter-navbar/recruite
 import { RecruiterViewCandidateComponent } from './components/recruiter-view-candidate/recruiter-view-candidate.component';
 import { RecruiterAddCandidateComponent } from './components/recruiter-add-candidate/recruiter-add-candidate.component';
 import { RecruiterViewRequirementComponent } from './components/recruiter-view-requirement/recruiter-view-requirement.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { ErrorComponent } from './components/error/error.component';
 import { AppComponent } from './app.component';
+import { AuthguardGuard } from './components/authguard/authguard.guard';
+import { AuthmGuard } from './components/authguard/authm.guard';
 
 const routes: Routes = [
   // Landing Page Routing
-  { path: '', component: AppComponent },
+  {path: '', component: AppComponent },
 
   //common routing paths
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: RegistrationComponent },
-  { path: 'home', component: HomeComponent },
-
+  {path: 'login', component: LoginComponent },
+  {path: 'signup', component: RegistrationComponent },
+  {path: 'forgotPassword', component: ForgotPasswordComponent},
+  {path:'resetPassword/:token',component:ResetPasswordComponent},
+  {path: 'home', component: HomeComponent},
+  {path:'edit/:id',component: EditProfileComponent},
+  
   //manager module routing paths
   // {path : 'manager/home', component: HomeComponent},
   {path : 'manager', component: ManagerNavbarComponent},
