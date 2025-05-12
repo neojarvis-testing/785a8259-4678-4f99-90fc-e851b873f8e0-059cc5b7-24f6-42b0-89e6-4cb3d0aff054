@@ -17,6 +17,8 @@ exports.getUserByEmailAndPassword = async (req, res) => {
             return res.status(400).json({ message: "Invalid email format" });
         }
 
+        validator.isStrongPassword(password)
+
         const user = await User.findOne({ email: sanitizeHtml(email), password: sanitizeHtml(password) });
 
         if (!user) {
