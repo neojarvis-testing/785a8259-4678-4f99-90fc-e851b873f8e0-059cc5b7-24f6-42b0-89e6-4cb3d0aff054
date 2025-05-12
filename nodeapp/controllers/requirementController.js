@@ -23,38 +23,6 @@ exports.getRequirementById = async (req, res) => {
     }
 }
 
-// exports.addRequirement = async (req, res) => {
-//     try {
-//         const { title, description, department } = req.body;
-
-//         if (!validator.isAlphanumeric(title.replace(/\s/g, ''))) {
-//             return res.status(400).json({ message: "Invalid title format" });
-//         }
-//         if (!validator.isLength(description, { min: 2 })) {
-//             return res.status(400).json({ message: "Description must be at least 2 characters long" });
-//         }
-//         if (!validator.isAlpha(department.replace(/\s/g, ''))) {
-//             return res.status(400).json({ message: "Invalid department format" });
-//         }
-
-//         const postedDate = new Date();
-//         const status = 'Active';
-
-//         const requirement = await Requirement.create({
-//             title: sanitizeHtml(title), description: sanitizeHtml(description), department: sanitizeHtml(department), postedDate: sanitizeHtml(postedDate), status: sanitizeHtml(status)
-//         });
-
-//         res.status(200).json({ message: "Requirement Added Successfully", requirement });
-
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// };
-
-const validator = require('validator');
-const sanitizeHtml = require('sanitize-html');
-const Requirement = require('../models/requirementModel');
-
 // Centralized input sanitization function
 const sanitizeInput = (input) => sanitizeHtml(input.trim());
 
