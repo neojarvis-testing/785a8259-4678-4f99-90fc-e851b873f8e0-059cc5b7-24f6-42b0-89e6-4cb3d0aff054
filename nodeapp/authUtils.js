@@ -19,3 +19,4 @@ exports.validateToken = (req, res, next) => {
         res.status(400).json({ error: error.message })
     }
 }
+exports.resetToken=(payload)=>jwt.sign(payload, process.env.SECRET_KEY, {expiresIn: '15m'});

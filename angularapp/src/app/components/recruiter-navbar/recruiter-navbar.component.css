@@ -1,24 +1,51 @@
 .manager-navbar {
-    background: linear-gradient(to right, rgb(220, 197, 245), rgb(107, 107, 236), royalblue);
+  background: linear-gradient(to right, rgb(220, 197, 245), rgb(107, 107, 236), royalblue);
+}
+.navbar .dropdown-toggle::after {
+  display: none !important;
+}
+.profile-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.profile-circle:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.profile-circle-lg {
+  width: 80px;
+  height: 80px;
+  background-color: #407BFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 1rem;
+}
+
+.dropdown-menu {
+  border:none;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+}
+a{
+  cursor: pointer;
+}
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    padding-top: 1rem;
   }
   
-  .navbar-brand {
-    font-weight: bold;
-    font-size: 1.5rem;
+  .profile-circle {
+    margin-left: auto;
   }
-  
-  .nav-link {
-    margin-left: 15px;
-    font-weight: 500;
-  }
-  
-  .dropdown-menu {
-    background-color: white;
-    border-radius: 5px;
-  }
-  
-  .btn-primary,
-  .btn-danger {
-    margin: 0 10px;
-    font-weight: bold;
-  }
+}

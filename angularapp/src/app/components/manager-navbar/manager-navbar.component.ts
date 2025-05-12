@@ -1,35 +1,52 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manager-navbar',
   templateUrl: './manager-navbar.component.html',
-  styleUrls: ['./manager-navbar.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./manager-navbar.component.css']
 })
 export class ManagerNavbarComponent implements OnInit {
+  userName: string = '';
+  userEmail: string = '';
+  userMobile: string = '';
+  isLoading: boolean = true;
 
-  userId: string;
-  
-  constructor(private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    const user = localStorage.getItem('userName')
-    this.userId = user
-    console.log('user object',user);
+    this.userName = localStorage.getItem('userName') || 'Manager';
+    const userId = localStorage.getItem('userId');
     
-    console.log('userName', this.userId);
+    if (userId) {
+      this.authService.getUserProfile(userId).subscribe({
+        next: (profile) => {
+          this.userEmail = profile.email || 'Not available';
+          this.userMobile = profile.mobile || 'Not available';
+          this.isLoading = false;
+        },
+        error: () => {
+          this.userEmail = localStorage.getItem('userEmail') || 'Error loading';
+          this.userMobile = localStorage.getItem('userMobile') || 'Error loading';
+          this.isLoading = false;
+        }
+      });
+    }
   }
 
-  logout(){
-    
+  navigateToEdit() {
+    const userId = localStorage.getItem('userId');
+    this.router.navigate([`edit/${userId}`]);
   }
 
-  confirmLogout(): void {
-    // Clear user session
+  logout() {
+    this.authService.logout();
     localStorage.clear();
-    // Navigate to login page
+    sessionStorage.clear();
     this.router.navigate(['/login']);
   }
-
 }
