@@ -33,10 +33,10 @@ export class ManagerAddRequirementComponent implements OnInit {
   }
 
   constructor(
-    private requirementService: RequirementService,
-    private fb: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute
+    private readonly requirementService: RequirementService,
+    private readonly fb: FormBuilder,
+    private readonly router: Router,
+    private readonly route: ActivatedRoute
   ) { }
 
   addRequirement(): void {

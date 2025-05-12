@@ -1,3 +1,4 @@
+const validator = require('validator');
 const Requirement = require('../models/requirementModel');
 
 exports.getAllRequirements = async (req, res) => {
@@ -24,9 +25,26 @@ exports.getRequirementById = async (req, res) => {
 exports.addRequirement = async (req, res) => {
     try {
         const { title, description, department } = req.body;
+
+        if (!title || !validator.isAlphanumeric(title.replace(/\s/g, ''))) {
+            return res.status(400).json({ message: "Invalid title format" });
+        }
+        if (!description || !validator.isLength(description, { min: 2 })) {
+            return res.status(400).json({ message: "Description must be at least 2 characters long" });
+        }
+        if (!department || !validator.isAlpha(department.replace(/\s/g, ''))) {
+            return res.status(400).json({ message: "Invalid department format" });
+        }
+
         const postedDate = new Date();
-        const status = 'Active'; const requirement = await Requirement.create({ title, description, department, postedDate, status });
-        res.status(200).json({ message: `Requirement Added Successfully`, requirement });
+        const status = 'Active';
+
+        const requirement = await Requirement.create({
+            title, description, department, postedDate, status
+        });
+
+        res.status(200).json({ message: "Requirement Added Successfully", requirement });
+
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

@@ -16,10 +16,10 @@ export class ResetPasswordComponent implements OnInit {
   isSubmitted = false;
 
   constructor(
-    private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private passwordResetService: PasswordResetService
+    private readonly fb: FormBuilder,
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly passwordResetService: PasswordResetService
   ) {
     this.resetForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -29,7 +29,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.token = this.route.snapshot.paramMap.get('token') || '';
+    this.token = this.route.snapshot.paramMap.get('token') ?? '';
   }
 
   get f() {
@@ -53,11 +53,11 @@ export class ResetPasswordComponent implements OnInit {
 
     this.passwordResetService.resetPassword(this.token, password).subscribe({
       next: (res) => {
-        this.message = res.message || 'Password reset successfully!';
+        this.message = res.message ?? 'Password reset successfully!';
         setTimeout(() => this.router.navigate(['/login']), 2000);
       },
       error: (err) => {
-        this.error = err.error?.message || 'Password reset failed. Please try again.';
+        this.error = err.error?.message ?? 'Password reset failed. Please try again.';
         this.isSubmitted = false;
       }
     });
