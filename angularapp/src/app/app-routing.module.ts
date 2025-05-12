@@ -33,19 +33,19 @@ const routes: Routes = [
   
   //manager module routing paths
   // {path : 'manager/home', component: HomeComponent},
-  {path : 'manager', component: ManagerNavbarComponent, canActivate: [AuthmGuard]},
-  {path : 'manager/view-requirement', component: ManagerViewRequirementComponent, canActivate: [AuthmGuard]},
-  {path : 'manager/add-requirement', component: ManagerAddRequirementComponent, canActivate: [AuthmGuard]},
-  {path : 'manager/add-requirement/:id', component: ManagerAddRequirementComponent, canActivate: [AuthmGuard]},
-  {path : 'manager/view-candidate', component: ManagerViewCandidateComponent, canActivate: [AuthmGuard]},
+  {path : 'manager', component: ManagerNavbarComponent},
+  {path : 'manager/view-requirement', component: ManagerViewRequirementComponent},
+  {path : 'manager/add-requirement', component: ManagerAddRequirementComponent},
+  {path : 'manager/add-requirement/:id', component: ManagerAddRequirementComponent},
+  {path : 'manager/view-candidate', component: ManagerViewCandidateComponent},
 
   //recruiter module routing paths
   // {path : 'recruiter/home', component: HomeComponent},
-  {path : 'recruiter', component: RecruiterNavbarComponent, canActivate: [AuthguardGuard]},
-  {path : 'recruiter/getAllCandidates', component: RecruiterViewCandidateComponent, canActivate: [AuthguardGuard]},
-  {path : 'recruiter/addCandidate', component: RecruiterAddCandidateComponent, canActivate: [AuthguardGuard]},
-  {path : 'recruiter/addCandidate/:id', component: RecruiterAddCandidateComponent, canActivate: [AuthguardGuard]},
-  {path: 'recruiter/getAllRequirements', component: RecruiterViewRequirementComponent, canActivate: [AuthguardGuard]},
+  {path : 'recruiter', component: RecruiterNavbarComponent},
+  {path : 'recruiter/getAllCandidates', component: RecruiterViewCandidateComponent},
+  {path : 'recruiter/addCandidate', component: RecruiterAddCandidateComponent},
+  {path : 'recruiter/addCandidate/:id', component: RecruiterAddCandidateComponent},
+  {path: 'recruiter/getAllRequirements', component: RecruiterViewRequirementComponent},
 
   //error component routing
   {path : '**' , component : ErrorComponent}
