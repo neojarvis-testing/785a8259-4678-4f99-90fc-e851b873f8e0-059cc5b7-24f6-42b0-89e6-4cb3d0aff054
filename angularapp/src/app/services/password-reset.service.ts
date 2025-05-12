@@ -7,9 +7,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class PasswordResetService {
-  private apiUrl = environment.backendUri5;
+  private readonly apiUrl = environment.backendUri5;
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   forgotPassword(email: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/user/forgot-password`, { email });

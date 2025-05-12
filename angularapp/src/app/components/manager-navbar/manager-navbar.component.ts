@@ -14,8 +14,8 @@ export class ManagerNavbarComponent implements OnInit {
   isLoading: boolean = true;
 
   constructor(
-    private authService: AuthService,
-    private router: Router
+    private readonly authService: AuthService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
@@ -25,8 +25,8 @@ export class ManagerNavbarComponent implements OnInit {
     if (userId) {
       this.authService.getUserProfile(userId).subscribe({
         next: (profile) => {
-          this.userEmail = profile.email || 'Not available';
-          this.userMobile = profile.mobile || 'Not available';
+          this.userEmail = profile.email ?? 'Not available';
+          this.userMobile = profile.mobile ?? 'Not available';
           this.isLoading = false;
         },
         error: () => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PasswordResetService } from 'src/app/services/password-reset.service';
 
 @Component({
@@ -15,8 +16,9 @@ export class ForgotPasswordComponent implements OnInit {
   error: string = '';
 
   constructor(
-    private fb: FormBuilder,
-    private passwordResetService: PasswordResetService
+    private readonly fb: FormBuilder,
+    private readonly passwordResetService: PasswordResetService,
+    private readonly router:Router
   ) {}
 
   ngOnInit(): void {
@@ -43,9 +45,10 @@ export class ForgotPasswordComponent implements OnInit {
         this.message = res.message;
         this.forgotForm.reset();
         this.isSubmitted = false;
+        setTimeout(() => this.router.navigate(['/login']), 2000);
       },
       error: (err) => {
-        this.error = err.error?.message || 'Something went wrong. Please try again.';
+        this.error = err.error?.message ?? 'Something went wrong. Please try again.';
         this.isSubmitted = false;
       }
     });

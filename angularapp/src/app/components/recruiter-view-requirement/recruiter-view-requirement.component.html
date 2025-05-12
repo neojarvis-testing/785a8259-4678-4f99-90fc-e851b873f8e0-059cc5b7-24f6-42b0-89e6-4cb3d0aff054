@@ -17,6 +17,7 @@
                     <th>Description</th>
                     <th>Department</th>
                     <th>Posted Date</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody *ngIf="paginatedRequirements.length; else noRecords">
@@ -26,6 +27,7 @@
                     <td>{{ req.description }}</td>
                     <td>{{ req.department }}</td>
                     <td>{{ req.postedDate | date: 'MMM dd, yyyy' }}</td>
+                    <td>{{req.status}}</td>
                 </tr>
             </tbody>
         </table>
