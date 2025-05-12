@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class PasswordResetService {
-  private apiUrl = environment.backendUri3;
+  private apiUrl = environment.backendUri5;
 
   constructor(private http: HttpClient) {}
 
