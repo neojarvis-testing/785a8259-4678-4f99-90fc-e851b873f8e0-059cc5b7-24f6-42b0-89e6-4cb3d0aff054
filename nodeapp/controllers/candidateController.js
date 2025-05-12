@@ -28,37 +28,39 @@ exports.addCandidate = async (req, res) => {
         const { name, email, phone, educationalQualification, experience, techStack, resumeUrl, applicationDate, status } = req.body;
 
         if (!validator.isAlpha(name.replace(/\s/g, ''))) {
-            return res.status(400).json({ message: "Invalid name format" });
+            return res.status(400).json({ message: 'Invalid name format' });
         }
         if (!validator.isEmail(email)) {
-            return res.status(400).json({ message: "Invalid email format" });
+            return res.status(400).json({ message: 'Invalid email format' });
         }
         if (!validator.isMobilePhone(phone, 'any')) {
-            return res.status(400).json({ message: "Invalid phone number format" });
+            return res.status(400).json({ message: 'Invalid phone number format' });
         }
         if (!validator.isURL(resumeUrl)) {
-            return res.status(400).json({ message: "Invalid resume URL format" });
+            return res.status(400).json({ message: 'Invalid resume URL format' });
         }
         if (!validator.isDate(applicationDate)) {
-            return res.status(400).json({ message: "Invalid application date format" });
+            return res.status(400).json({ message: 'Invalid application date format' });
         }
 
-        await Candidate.create({
-            name: sanitizeHtml(name), 
-            email: sanitizeHtml(email), 
-            phone: sanitizeHtml(phone), 
-            educationalQualification: sanitizeHtml(educationalQualification), 
-            experience: sanitizeHtml(experience), 
-            techStack: sanitizeHtml(techStack), 
-            resumeUrl: sanitizeHtml(resumeUrl), 
-            applicationDate: sanitizeHtml(applicationDate), 
-            status: sanitizeHtml(status)
-        });
+        const sanitizedCandidate = {
+            name: sanitizeHtml(name),
+            email: sanitizeHtml(email),
+            phone: sanitizeHtml(phone),
+            educationalQualification: sanitizeHtml(educationalQualification),
+            experience: sanitizeHtml(experience),
+            techStack: sanitizeHtml(techStack),
+            resumeUrl: sanitizeHtml(resumeUrl),
+            applicationDate: sanitizeHtml(applicationDate),
+            status: sanitizeHtml(status),
+        };
 
-        res.status(200).json({ message: "Candidate Added Successfully" });
+        const candidate = new Candidate(sanitizedCandidate);
+        await candidate.save();
 
+        res.status(201).json({ message: 'Candidate Added Successfully', candidate });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: 'Internal server error' });
     }
 };
 
