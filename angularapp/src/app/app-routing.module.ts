@@ -16,8 +16,6 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { ErrorComponent } from './components/error/error.component';
 import { AppComponent } from './app.component';
-import { AuthguardGuard } from './components/authguard/authguard.guard';
-import { AuthmGuard } from './components/authguard/authm.guard';
 
 const routes: Routes = [
   // Landing Page Routing

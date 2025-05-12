@@ -17,7 +17,7 @@ export class RecruiterViewRequirementComponent implements OnInit {
   totalPages: number = 1;
   pages: number[] = []; 
 
-  constructor(private requirementService: RequirementService) {}
+  constructor(private readonly requirementService: RequirementService) {}
 
   ngOnInit(): void {
     this.fetchRequirements();

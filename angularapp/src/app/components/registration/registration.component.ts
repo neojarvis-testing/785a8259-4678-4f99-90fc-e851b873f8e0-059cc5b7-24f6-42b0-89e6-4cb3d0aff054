@@ -1,21 +1,21 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 
-declare var bootstrap: any;
+declare let bootstrap: any;
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent implements AfterViewInit {
+export class RegistrationComponent {
   submitted = false;
   signupForm!: FormGroup;
   modalInstance!: any;
-  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
+  constructor(private readonly fb: FormBuilder, private readonly router: Router, private readonly authService: AuthService) {
     this.signupForm = this.fb.group({
       userName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -24,9 +24,6 @@ export class RegistrationComponent implements AfterViewInit {
       confirmPassword: ['', Validators.required],
       role: ['', Validators.required]
     }, { validators: this.passwordMatchValidator });
-  }
-
-  ngAfterViewInit(): void {
   }
 
   // Password match validation
@@ -60,7 +57,6 @@ export class RegistrationComponent implements AfterViewInit {
         modalInstance.show();
       }
 
-        // this.navigateToLogin();
         this.navigateToLogin();
       },
       error: (error) => {

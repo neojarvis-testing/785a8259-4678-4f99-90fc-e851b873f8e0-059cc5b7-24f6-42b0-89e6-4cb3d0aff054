@@ -37,7 +37,7 @@
                         [routerLink]="['/manager/add-requirement', req._id]">Edit</button>
                     <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal"
                         (click)="setSelectedRequirement(req._id)">Delete</button>
-                    <button class="btn btn-sm"
+                    <button class="btn btn-sm ms-2"
                         [ngClass]="{'btn-success': req.status === 'Closed', 'btn-secondary': req.status === 'Active'}"
                         (click)="toggleStatus(req)">
                         {{ req.status === 'Active' ? 'Mark as Closed' : 'Mark as Active' }}
