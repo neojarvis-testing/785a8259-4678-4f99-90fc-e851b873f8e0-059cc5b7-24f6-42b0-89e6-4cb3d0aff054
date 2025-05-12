@@ -11,8 +11,8 @@ const createError = require('http-errors')
 
 exports.getUserByEmailAndPassword = async (req, res) => {
     try {
-        const { email, password } = req.body;
-
+        let { email, password } = req.body;
+        email=email.toString();
         // Validate input securely
         if (!validator.isEmail(email)) {
             return res.status(400).json({ message: "Invalid email format" });
@@ -48,7 +48,7 @@ exports.getUserByEmailAndPassword = async (req, res) => {
         });
 
     } catch (error) {
-        res.status(500).json({ message: "Internal server error" });
+        res.status(500).json({ message: error.message });
     }
 };
 
@@ -91,7 +91,7 @@ exports.addUser = async (req, res) => {
         res.status(201).json({ message: "User added successfully", user });
 
     } catch (error) {
-        res.status(500).json({ message: "Internal server error" });
+        res.status(500).json({ message: error.message });
     }
 };
 
@@ -174,7 +174,7 @@ exports.forgotPassword = async (email) => {
         return { message: "Password reset link sent" };
 
     } catch (error) {
-        throw createError(500, "Internal server error");
+        throw createError(500, error.message);
     }
 };
 
