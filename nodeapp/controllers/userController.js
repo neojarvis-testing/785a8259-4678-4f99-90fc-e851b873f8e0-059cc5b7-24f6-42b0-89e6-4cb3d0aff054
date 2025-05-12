@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const validator = require('validator');
+const sanitizeHtml = require('sanitize-html');
 const User = require('../models/userModel');
 const { generateToken } = require('../authUtils')
 const transport = require('../mailTransport');
@@ -19,7 +20,7 @@ exports.getUserByEmailAndPassword = async (req, res) => {
             return res.status(400).json({ message: "Password must be at least 8 characters long" });
         }
 
-        const user = await User.findOne({ email, password });
+        const user = await User.findOne({ email: sanitizeHtml(email), password: sanitizeHtml(password) });
 
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
@@ -58,11 +59,11 @@ exports.addUser = async (req, res) => {
         }
 
         await User.create({
-            userName,
-            email,
-            mobile,
-            password,
-            role
+            userName: sanitizeHtml(userName),
+            email: sanitizeHtml(email),
+            mobile: sanitizeHtml(mobile),
+            password: sanitizeHtml(password),
+            role: sanitizeHtml(role)
         });
 
         res.status(200).json({ message: "Success" });
@@ -85,7 +86,7 @@ exports.getUserById = async (req, res) => {
 };
 
 exports.forgotPassword = async (email) => {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: sanitizeHtml(email) });
     if (!user) throw createError(404, `No user found with EMAIL ID: ${email}`);
     const payload = {
         id: user._id.toString(),

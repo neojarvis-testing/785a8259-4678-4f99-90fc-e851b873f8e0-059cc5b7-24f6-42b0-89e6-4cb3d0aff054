@@ -1,4 +1,5 @@
 const validator = require('validator');
+const sanitizeHtml = require('sanitize-html');
 const Requirement = require('../models/requirementModel');
 
 exports.getAllRequirements = async (req, res) => {
@@ -40,7 +41,7 @@ exports.addRequirement = async (req, res) => {
         const status = 'Active';
 
         const requirement = await Requirement.create({
-            title, description, department, postedDate, status
+            title: sanitizeHtml(title), description: sanitizeHtml(description), department: sanitizeHtml(department), postedDate: sanitizeHtml(postedDate), status: sanitizeHtml(status)
         });
 
         res.status(200).json({ message: "Requirement Added Successfully", requirement });
