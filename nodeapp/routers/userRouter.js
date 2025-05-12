@@ -4,15 +4,6 @@ const userController = require('../controllers/userController');
 
 router.post('/signup', userController.addUser)
 router.post('/login', userController.getUserByEmailAndPassword);
-// router.post('/forgot-password', async (req, res, next) => {
-//     try {
-//         const { email } = req.body;
-//         const result = await userController.forgotPassword(email);
-//         res.status(200).json(result);
-//     } catch (err) {
-//         next(err);
-//     }
-// });
 router.post('/forgot-password', async (req, res, next) => {
     try {
         let { email } = req.body;

@@ -14,7 +14,7 @@ exports.getAllCandidates = async (_req, res) => {
 exports.getCandidateById = async (req, res) => {
     try {
         const candidate = await Candidate.findById(req.params?.id);
-        if(!candidate) {
+        if (!candidate) {
             return res.status(404).json({ message: `Cannot find any Candidate with ID ${req.params?.id}` })
         }
         res.status(200).json(candidate)
@@ -66,8 +66,8 @@ exports.addCandidate = async (req, res) => {
 
 exports.updateCandidate = async (req, res) => {
     try {
-        const candidate = await Candidate.findByIdAndUpdate(req.params?.id, req.body, { new: true } );
-        if(!candidate) {
+        const candidate = await Candidate.findByIdAndUpdate(req.params?.id, req.body, { new: true });
+        if (!candidate) {
             return res.status(404).json({ message: `Cannot find any Candidate with ID ${req.params?.id}` })
         }
         res.status(200).json({ message: `Success`, candidate })
@@ -79,7 +79,7 @@ exports.updateCandidate = async (req, res) => {
 exports.deleteCandidate = async (req, res) => {
     try {
         const candidate = await Candidate.findByIdAndDelete(req.params?.id);
-        if(!candidate) {
+        if (!candidate) {
             return res.status(404).json({ message: `Cannot find any Candidate with ID ${req.params?.id}` })
         }
         res.status(200).json({ message: `Candidate Deleted Successfully` })
