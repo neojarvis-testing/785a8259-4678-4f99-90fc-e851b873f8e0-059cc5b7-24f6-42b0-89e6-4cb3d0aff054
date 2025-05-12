@@ -16,12 +16,12 @@ const requirementSchema = new mongoose.Schema({
     postedDate: {
         type: Date,
         required: true,
-        // default : Date.now()
+        default : Date.now()
     },
     status: {
         type: String,
-        // default : 'Active',
-        required: true
+        required: true,
+        default : 'Active'
     }
 }, { timestamps: true });
 
