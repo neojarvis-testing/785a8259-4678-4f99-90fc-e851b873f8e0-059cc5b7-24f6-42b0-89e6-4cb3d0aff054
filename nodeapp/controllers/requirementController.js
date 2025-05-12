@@ -1,3 +1,5 @@
+const validator = require('validator');
+const sanitizeHtml = require('sanitize-html');
 const Requirement = require('../models/requirementModel');
 
 exports.getAllRequirements = async (req, res) => {
@@ -21,17 +23,46 @@ exports.getRequirementById = async (req, res) => {
     }
 }
 
+// Centralized input sanitization function
+const sanitizeInput = (input) => sanitizeHtml(input.trim());
+
 exports.addRequirement = async (req, res) => {
     try {
         const { title, description, department } = req.body;
+
+        // Validate user inputs before processing
+        if (!validator.isAlphanumeric(title.replace(/\s/g, ''))) {
+            return res.status(400).json({ message: "Invalid title format" });
+        }
+        if (!validator.isLength(description, { min: 2 })) {
+            return res.status(400).json({ message: "Description must be at least 2 characters long" });
+        }
+        if (!validator.isAlpha(department.replace(/\s/g, ''))) {
+            return res.status(400).json({ message: "Invalid department format" });
+        }
+
         const postedDate = new Date();
-        const status = 'Active'; 
-        const requirement = await Requirement.create({ title, description, department, postedDate, status });
-        res.status(200).json({ message: `Requirement Added Successfully`, requirement });
+        const status = 'Active';
+
+        // Securely create requirement using sanitized data
+        const sanitizedRequirement = {
+            title: sanitizeInput(title),
+            description: sanitizeInput(description),
+            department: sanitizeInput(department),
+            postedDate: postedDate, // Date is already safe, no need to sanitize
+            status: status // Status is predefined, no need to sanitize
+        };
+
+        const requirement = new Requirement(sanitizedRequirement);
+        await requirement.save();
+
+        res.status(201).json({ message: "Requirement Added Successfully", requirement });
+
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
+
 
 exports.updateRequirement = async (req, res) => {
     try {

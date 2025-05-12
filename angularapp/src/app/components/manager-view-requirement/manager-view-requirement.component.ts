@@ -18,7 +18,7 @@ export class ManagerViewRequirementComponent implements OnInit {
   totalPages: number = 1;
   pages: number[] = []; 
 
-  constructor(private requirementService: RequirementService, private router: Router) { }
+  constructor(private readonly requirementService: RequirementService, private readonly router: Router) { }
 
   ngOnInit(): void {
     this.getAllRequirements();
@@ -30,7 +30,6 @@ export class ManagerViewRequirementComponent implements OnInit {
       (data) => {
         this.requirements = data;
         this.filteredRequirements = [...data]
-        // console.log(this.filteredRequirements);
         this.calculatePagination(); 
       },
       (error) => {

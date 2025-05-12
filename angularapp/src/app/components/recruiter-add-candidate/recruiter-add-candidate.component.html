@@ -44,7 +44,7 @@
 
     <!-- Experience -->
     <div class="mb-3">
-      <label for="experience" class="form-label">Experience <span class="text-danger">*</span> (in years) </label>
+      <label for="experience" class="form-label">Experience <span class="text-danger">*</span></label>
       <input type="text" id="experience" class="form-control" formControlName="experience" placeholder="Experience" />
       <div *ngIf="f.experience.touched && f.experience.invalid" class="text-danger">Experience is required</div>
     </div>
@@ -81,8 +81,8 @@
 </div>
 
 <!-- Success Modal -->
-<div class="modal fade" id="successModal" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="successModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-success" style="border-top: 5px solid green;">
       <div class="modal-header">
         <h5 class="modal-title text-success">Success</h5>

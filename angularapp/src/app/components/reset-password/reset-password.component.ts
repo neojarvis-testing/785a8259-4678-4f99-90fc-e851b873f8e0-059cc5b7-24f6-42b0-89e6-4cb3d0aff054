@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PasswordResetService } from 'src/app/services/password-reset.service';
-
+import {jwtDecode} from 'jwt-decode';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
@@ -16,20 +16,36 @@ export class ResetPasswordComponent implements OnInit {
   isSubmitted = false;
 
   constructor(
-    private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private passwordResetService: PasswordResetService
+    private readonly fb: FormBuilder,
+    private readonly route: ActivatedRoute,
+    private readonly router: Router,
+    private readonly passwordResetService: PasswordResetService
   ) {
     this.resetForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/)
+      ]],
       confirmPassword: ['', Validators.required]
     }, { validator: this.matchPasswords });
-  }
+  }    
 
   ngOnInit(): void {
-    this.token = this.route.snapshot.paramMap.get('token') || '';
+    this.token = this.route.snapshot.paramMap.get('token') ?? '';
+    if (this.token) {
+      try {
+        const decodedToken: any = jwtDecode(this.token);
+        const userEmail = decodedToken.email;
+  
+        if (userEmail) {
+          this.resetForm.patchValue({ email: userEmail });
+        }
+      } catch (error) {
+        console.error('Invalid token:', error);
+      }
+    }
   }
 
   get f() {
@@ -53,11 +69,11 @@ export class ResetPasswordComponent implements OnInit {
 
     this.passwordResetService.resetPassword(this.token, password).subscribe({
       next: (res) => {
-        this.message = res.message || 'Password reset successfully!';
+        this.message = res.message ?? 'Password reset successfully!';
         setTimeout(() => this.router.navigate(['/login']), 2000);
       },
       error: (err) => {
-        this.error = err.error?.message || 'Password reset failed. Please try again.';
+        this.error = err.error?.message ?? 'Password reset failed. Please try again.';
         this.isSubmitted = false;
       }
     });

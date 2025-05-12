@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'angularapp';
   
   isLanding: boolean = false;
-  constructor(private router: Router) {
+  constructor(private readonly router: Router) {
   }
   ngOnInit(): void {
     this.router.events.subscribe(() => {
