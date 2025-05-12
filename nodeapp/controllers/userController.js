@@ -75,14 +75,32 @@ exports.forgotPassword=async (email)=>{
         to: email,
         subject: 'Password Reset Request',
         html:`
-        <h1>Password Request</h1>
-        <section>
-            <p><strong>Important !!! User ${user.name}</strong></p>
-            <p>Attention User! this is to inform you that, you have requested for a password change,if you didnt requested for the password change kindly ignore this message.</p>
-            <a href="${process.env.CLIENT_URL}/resetPassword/${token}" style="background-color: blue; cursor:pointer; border: 1px;display: inline-block;color:white;padding:2px;">
-                Reset Password
-            </a>
-        </section>
+        <div style="font-family: Arial, sans-serif; margin: auto; padding: 20px; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); background: #ffffff;">
+    <div>
+        <img src="https://tinyurl.com/mr3u3ah9" alt="HireFlow Logo" style="width: 100%; max-height: 120px; object-fit: contain;">
+    </div>
+
+    <h2 style="color: #333; text-align: center;">Password Reset Request</h2>
+    
+    <p style="color: #555; font-size: 16px; ">
+        <strong>Dear ${user.userName},</strong><br>
+        We received a request to reset your password. If you didn't make this request, simply ignore this email.<br>
+        Otherwise, click the button below to reset your password:
+    </p>
+
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="${process.env.CLIENT_URL}/resetPassword/${token}" 
+            style="background: linear-gradient(45deg, rgb(220, 197, 245), rgb(107, 107, 236), royalblue);
+            padding: 12px 25px; color: white; font-size: 18px; font-weight: bold; border-radius: 25px;
+            text-decoration: none; display: inline-block; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            Reset Password
+        </a>
+    </div>
+
+    <p style="color: #777; font-size: 14px; text-align: center; margin-top: 20px;">
+        If you're experiencing any issues, feel free to contact our support team.
+    </p>
+</div>
         `
     });
     return {message: 'Password reset link sent'}
