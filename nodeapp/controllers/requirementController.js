@@ -59,7 +59,7 @@ exports.addRequirement = async (req, res) => {
         res.status(201).json({ message: "Requirement Added Successfully", requirement });
 
     } catch (error) {
-        res.status(500).json({ message: "Internal server error" });
+        res.status(500).json({ message: error.message });
     }
 };
 
