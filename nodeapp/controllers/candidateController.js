@@ -1,5 +1,3 @@
-const validator = require('validator');
-const sanitizeHtml = require('sanitize-html');
 const Candidate = require('../models/candidateModel');
 
 exports.getAllCandidates = async (_req, res) => {
@@ -25,28 +23,13 @@ exports.getCandidateById = async (req, res) => {
 
 exports.addCandidate = async (req, res) => {
     try {
-        const { name, email, phone, educationalQualification, experience, techStack, resumeUrl, applicationDate, status } = req.body;
-
-        const sanitizedCandidate = {
-            name: sanitizeHtml(name),
-            email: sanitizeHtml(email),
-            phone: sanitizeHtml(phone),
-            educationalQualification: sanitizeHtml(educationalQualification),
-            experience: sanitizeHtml(experience),
-            techStack: sanitizeHtml(techStack),
-            resumeUrl,
-            applicationDate,
-            status
-        };
-
-        const candidate = new Candidate(sanitizedCandidate);
-        await candidate.save();
-
-        res.status(201).json({ message: 'Candidate Added Successfully', candidate });
+        const {name,email,phone,educationalQualification,experience,techStack,resumeUrl,applicationDate,status} = req.body;
+        await Candidate.create({name,email,phone,educationalQualification,experience,techStack,resumeUrl,applicationDate,status});
+        res.status(200).json({ message: `Candidate Added Successfully` })
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-};
+}
 
 exports.updateCandidate = async (req, res) => {
     try {

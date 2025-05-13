@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'angularapp';
+  
   isLanding: boolean = false;
   constructor(private readonly router: Router) {
   }
