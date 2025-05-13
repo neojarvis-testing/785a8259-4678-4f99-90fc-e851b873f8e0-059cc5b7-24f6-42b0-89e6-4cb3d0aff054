@@ -23,14 +23,10 @@ exports.getRequirementById = async (req, res) => {
     }
 }
 
-// Centralized input sanitization function
-const sanitizeInput = (input) => sanitizeHtml(input.trim());
-
 exports.addRequirement = async (req, res) => {
     try {
         const { title, description, department } = req.body;
 
-        // Validate user inputs before processing
         if (!validator.isAlphanumeric(title.replace(/\s/g, ''))) {
             return res.status(400).json({ message: "Invalid title format" });
         }
@@ -44,25 +40,16 @@ exports.addRequirement = async (req, res) => {
         const postedDate = new Date();
         const status = 'Active';
 
-        // Securely create requirement using sanitized data
-        const sanitizedRequirement = {
-            title: sanitizeInput(title),
-            description: sanitizeInput(description),
-            department: sanitizeInput(department),
-            postedDate: postedDate, // Date is already safe, no need to sanitize
-            status: status // Status is predefined, no need to sanitize
-        };
+        const requirement = await Requirement.create({
+            title: sanitizeHtml(title), description: sanitizeHtml(description), department: sanitizeHtml(department), postedDate, status
+        });
 
-        const requirement = new Requirement(sanitizedRequirement);
-        await requirement.save();
-
-        res.status(201).json({ message: "Requirement Added Successfully", requirement });
+        res.status(200).json({ message: "Requirement Added Successfully", requirement });
 
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
-
 
 exports.updateRequirement = async (req, res) => {
     try {
