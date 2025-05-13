@@ -7,9 +7,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class RequirementService {
-  private readonly baseUrl = environment.backendUri1;
+  private baseUrl = environment.backendUri3;
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
@@ -41,4 +41,3 @@ export class RequirementService {
     return this.http.delete<any>(`${this.baseUrl}/requirement/deleteRequirement/${requirementId}`, { headers: this.getHeaders() });
   }
 }
-

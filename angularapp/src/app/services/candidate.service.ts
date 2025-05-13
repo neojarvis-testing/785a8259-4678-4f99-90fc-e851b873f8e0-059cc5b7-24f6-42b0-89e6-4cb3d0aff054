@@ -9,9 +9,9 @@ import { Candidate } from '../models/candidate.model';
   providedIn: 'root'
 })
 export class CandidateService {
-  private readonly baseUrl: string = environment.backendUri1;
+  private baseUrl: string = environment.backendUri3;
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   private getHeaders(): HttpHeaders {
     return new HttpHeaders({
@@ -45,4 +45,3 @@ export class CandidateService {
     return this.http.delete<any>(`${this.baseUrl}/candidate/deleteCandidate/${candidateId}`, { headers: this.getHeaders() });
   }
 }
-
